@@ -4,35 +4,26 @@ const prisma = new PrismaClient();
 
 export const resolvers = {
   Query: {
-    getUsers: async () => {
-      try {
-        const users = await prisma.user.findMany();
-        console.log("users", users);
-        return users;
-      } catch (error) {
-        throw error;
-      }
-    },
-    getUser: async (_, args) => {
-      try {
-        const user = await prisma.user.findUnique({ where: { id: args.id } });
-        console.log("user", user);
-        return user;
-      } catch (error) {
-        throw error;
-      }
-    },
+    getUsers: () => prisma.user.findMany(),
+    getUser: async (_, args) =>
+      prisma.user.findUnique({ where: { id: args.id } }),
+    getLorePages: () => prisma.lorePage.findMany(),
+    getLorePage: (_, { id }) =>
+      prisma.lorePage.findUnique({
+        where: { id: parseInt(id) },
+      }),
   },
   Mutation: {
     createLorePage: async (
       _,
-      { title, content, authorId, published = false }
+      { title, content, authorId, image, published = false }
     ) => {
       try {
-        return prisma.page.create({
+        return prisma.lorePage.create({
           data: {
             title,
             content,
+            image,
             authorId,
             published,
           },

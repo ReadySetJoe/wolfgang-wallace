@@ -1,48 +1,79 @@
 import Page from "../../components/page";
-import { gql, useMutation, useQuery } from "@apollo/client";
-import { Box, TextField } from "@mui/material";
+import { gql, useMutation } from "@apollo/client";
+import { Box, Button, TextField } from "@mui/material";
+import AWS from "aws-sdk";
 import { useState } from "react";
 
-// const GET_USERS = gql`
-//   query GetUsers {
-//     getUsers {
-//       id
-//       email
-//     }
-//   }
-// `;
+const S3_BUCKET = "wolfgang-wallace";
+const REGION = "us-east-2";
 
-// Define mutation
+AWS.config.update({
+  accessKeyId: "AKIAXGU434Y2CDTCIHOC",
+  secretAccessKey: "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",
+});
+
+const myBucket = new AWS.S3({
+  params: { Bucket: S3_BUCKET },
+  region: REGION,
+});
+
 const CREATE_LORE_PAGE = gql`
   mutation CreateLorePage(
     $title: String
     $content: String
+    $image: String
     $authorId: String!
   ) {
-    createLorePage(title: $title, content: $content, authorId: $authorId) {
+    createLorePage(
+      title: $title
+      content: $content
+      authorId: $authorId
+      image: $image
+    ) {
       title
     }
   }
 `;
 
 export default function Admin() {
-  // const { loading, error, data } = useQuery(GET_USERS);
-  const [createLorePage, { data, loading, error }] =
-    useMutation(CREATE_LORE_PAGE);
+  const [createLorePage] = useMutation(CREATE_LORE_PAGE);
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-  // const { handleSubmit, reset, control } = useForm();
+  const [image, setImage] = useState("");
 
-  console.log("data", data);
+  const [progress, setProgress] = useState(0);
+
+  const handleFileInput = (e) => {
+    const file = e.target.files[0];
+    console.log("file.name", file.name);
+    const params = {
+      ACL: "public-read",
+      Body: file,
+      Bucket: S3_BUCKET,
+      Key: file.name,
+    };
+
+    const res = myBucket
+      .putObject(params, (err, data) => {
+        console.log("data", data);
+      })
+      .on("httpUploadProgress", (evt) => {
+        setProgress(Math.round((evt.loaded / evt.total) * 100));
+      });
+    setImage(`https://${S3_BUCKET}.s3.${REGION}.amazonaws.com/${file.name}`);
+    console.log("res", res);
+  };
+
   return (
     <Page>
-      <p>This is the admin page!</p>
+      <p>This is the admin page. Let's create new lore</p>
       <Box
         component="form"
         sx={{
           "& > :not(style)": { m: 2 },
           display: "flex",
           flexDirection: "column",
+          maxWidth: "600px",
         }}
       >
         <TextField
@@ -53,7 +84,7 @@ export default function Admin() {
           onChange={(e) => setTitle(e.target.value)}
         />
         <TextField
-          label="Conent"
+          label="Content"
           variant="filled"
           color="info"
           value={content}
@@ -61,21 +92,44 @@ export default function Admin() {
           multiline
           minRows={3}
         />
+        {image ? (
+          <div>
+            <img
+              src={image}
+              style={{ width: "100%", cursor: "pointer" }}
+              onClick={() => setImage("")}
+            />
+          </div>
+        ) : (
+          <label
+            style={{
+              height: "100px",
+              padding: "2rem",
+              border: "1px gray solid",
+              textAlign: "center",
+              cursor: "pointer",
+            }}
+          >
+            <input
+              type="file"
+              onChange={handleFileInput}
+              style={{ display: "none" }}
+            />
+            Upload Image
+          </label>
+        )}
+        {progress !== 0 && progress !== 100 && <p>Progress: {progress}%</p>}
         <button
           onClick={async (e) => {
             e.preventDefault();
-            try {
-              const res = await createLorePage({
-                variables: {
-                  title,
-                  content,
-                  authorId: "123",
-                },
-              });
-              console.log("res", res);
-            } catch (error) {
-              console.log("error:", error);
-            }
+            await createLorePage({
+              variables: {
+                title,
+                content,
+                image,
+                authorId: "123",
+              },
+            });
           }}
         >
           submit.

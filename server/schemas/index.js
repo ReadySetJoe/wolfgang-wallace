@@ -12,6 +12,7 @@ export const typeDefs = gql`
     id: ID!
     title: String
     content: String
+    image: String
     published: Boolean
     author: User!
   }
@@ -27,6 +28,7 @@ export const typeDefs = gql`
     createLorePage(
       title: String
       content: String
+      image: String
       published: Boolean
       authorId: String!
     ): LorePage

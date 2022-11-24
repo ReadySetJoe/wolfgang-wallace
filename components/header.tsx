@@ -11,7 +11,7 @@ const Header = () => {
         <Link href="/band">
           <p>ABOUT</p>
         </Link>
-        <Link href="/lord">
+        <Link href="/lore">
           <p>LORE</p>
         </Link>
         <Link href="/mystery">
