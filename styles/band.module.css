@@ -1,0 +1,54 @@
+
+.grow {
+    height: 200;
+    margin: 0;
+    transition: all .2s ease-in-out;
+}
+
+.grow:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+@media only screen and (min-width: 768px) {
+    .grow {
+        height: 500
+    }
+}
+
+.slideDown {
+    width: 100%;
+    overflow: hidden;
+}
+
+.slideDown div {
+    animation: 1s slide-down;
+    margin-top: 0%;
+}
+
+@keyframes slide-down {
+    from {
+        margin-top: -100%;
+        height: 150%;
+    }
+
+    to {
+        margin-top: 0%;
+        height: 100%;
+    }
+}
+
+.image-container {
+    width: 100%;
+}
+
+.image-container > div {
+    position: unset !important;
+}
+
+.image-container .image {
+    object-fit: contain;
+    width: 100% !important;
+    position: relative !important;
+    height: unset !important;
+}

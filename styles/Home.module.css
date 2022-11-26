@@ -24,3 +24,11 @@
   font-size: 1.5rem;
 }
 
+.grow {
+  margin: 0;
+  transition: all .2s ease-in-out;
+}
+
+.grow:hover {
+  transform: scale(1.3);
+}

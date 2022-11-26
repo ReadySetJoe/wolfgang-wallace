@@ -12,27 +12,45 @@ export default function Landing() {
       <h1>Choose your path:</h1>
 
       <section style={{ textAlign: "center" }}>
-        <a href="/band">
-          <h3>Narcissism</h3>
-          <h3 style={{ margin: 0 }}>(about us)</h3>
+        <a href="/band" style={{ margin: "auto" }}>
+          <h3 className={styles.grow}>
+            Narcissism
+            <br />
+            (about us)
+          </h3>
         </a>
-        <svg height={350} width={350}>
+        <svg
+          height={350}
+          width={350}
+          style={{
+            margin: "-15px 50px 0px 50px",
+          }}
+        >
           <polygon
             points="175 80, 310 310, 40 310"
-            style={{ stroke: "white", strokeWidth: "40px" }}
+            style={{
+              stroke: "white",
+              strokeWidth: "40px",
+            }}
           />
         </svg>
         <div style={{ display: "flex", justifyContent: "space-between" }}>
           <div>
             <a href="/lore">
-              <h3>Machiavellianism</h3>
-              <h3>(the lore)</h3>
+              <h3 className={styles.grow}>
+                Machiavellianism
+                <br />
+                (the lore)
+              </h3>
             </a>
           </div>
           <div>
             <a href="/mystery">
-              <h3>Psychopathy</h3>
-              <h3>(a mystery)</h3>
+              <h3 className={styles.grow}>
+                Psychopathy
+                <br />
+                (a mystery)
+              </h3>
             </a>
           </div>
         </div>
