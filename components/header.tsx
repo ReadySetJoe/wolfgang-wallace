@@ -4,9 +4,9 @@ import styles from "../styles/Header.module.css";
 const Header = () => {
   return (
     <div className={styles.header}>
-      <a href="/">
+      <Link href="/">
         <h2>wolfgang wallace</h2>
-      </a>
+      </Link>
       <div className={styles.navigationLinks}>
         <Link href="/band">
           <p>ABOUT</p>
@@ -18,7 +18,7 @@ const Header = () => {
           <p>MYSTERY</p>
         </Link>
       </div>
-      <a href="/admin">admin</a>
+      <Link href="/admin">admin</Link>
     </div>
   );
 };

@@ -1,3 +1,4 @@
+import { gql, useQuery } from "@apollo/client";
 import {
   Card,
   CardActionArea,
@@ -6,7 +7,6 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
-import { gql, useQuery } from "@apollo/client";
 
 import Page from "../../components/page";
 
@@ -39,19 +39,19 @@ export default function Lore() {
       <Stack>
         <h2>Recently Updated:</h2>
         <div style={{ display: "flex", overflowX: "auto" }}>
-          {lorePages.map(({ id, title, content, image }) => (
-            <a href={`/lore/${id}`}>
+          {lorePages.map((page: any) => (
+            <a key={page.id} href={`/lore/${page.id}`}>
               <Card raised sx={{ width: 300, margin: "1rem" }}>
                 <CardActionArea>
                   <CardMedia
                     component="img"
                     height="300"
-                    image={image}
-                    alt={title}
+                    image={page.image}
+                    alt={page.title}
                   />
                   <CardContent>
                     <Typography gutterBottom variant="h5" component="div">
-                      {title || "TITLE_NOT_FOUND"}
+                      {page.title || "TITLE_NOT_FOUND"}
                     </Typography>
                     <Typography
                       variant="body2"
@@ -60,7 +60,7 @@ export default function Lore() {
                       textOverflow="ellipsis"
                       overflow="hidden"
                     >
-                      {content || "WORDS_NOT_FOUND"}
+                      {page.content || "WORDS_NOT_FOUND"}
                     </Typography>
                   </CardContent>
                 </CardActionArea>

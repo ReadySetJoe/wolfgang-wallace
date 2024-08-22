@@ -4,7 +4,7 @@ import Page from "../../components/page";
 const SECRET_KEYS = ["n", "o", "t", "h", "i", "n", "g"];
 export default function Mystery() {
   const [secretKeyNdx, setSecretKeyNdx] = useState(0);
-  const handleKeyPress = (e) => {
+  const handleKeyPress = (e: any) => {
     console.log("e", e);
     console.log("e.key", e.key);
     if (e.key == SECRET_KEYS[secretKeyNdx]) {

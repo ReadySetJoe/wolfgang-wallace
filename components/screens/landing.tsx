@@ -1,3 +1,4 @@
+import Link from "next/link";
 import styles from "../../styles/Home.module.css";
 
 export default function Landing() {
@@ -12,13 +13,13 @@ export default function Landing() {
       <h1>Choose your path:</h1>
 
       <section style={{ textAlign: "center" }}>
-        <a href="/band" style={{ margin: "auto" }}>
+        <Link href="/band" style={{ margin: "auto" }}>
           <h3 className={styles.grow}>
             Narcissism
             <br />
             (about us)
           </h3>
-        </a>
+        </Link>
         <svg
           height={350}
           width={350}
@@ -36,22 +37,22 @@ export default function Landing() {
         </svg>
         <div style={{ display: "flex", justifyContent: "space-between" }}>
           <div>
-            <a href="/lore">
+            <Link href="/lore">
               <h3 className={styles.grow}>
                 Machiavellianism
                 <br />
                 (the lore)
               </h3>
-            </a>
+            </Link>
           </div>
           <div>
-            <a href="/mystery">
+            <Link href="/mystery">
               <h3 className={styles.grow}>
                 Psychopathy
                 <br />
                 (a mystery)
               </h3>
-            </a>
+            </Link>
           </div>
         </div>
       </section>

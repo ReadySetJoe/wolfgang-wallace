@@ -1,14 +1,11 @@
-import Image from "next/image";
 import { Stack } from "@mui/system";
+import Image from "next/image";
 
-import styles from "../../styles/band.module.css";
 import Page from "../../components/page";
 import band from "../../images/band-art-landscape.jpeg";
+import dsImg from "../../images/dark-spectre-image.jpg";
 import joeImg from "../../images/joe-image.jpeg";
 import wallyImg from "../../images/wally-image.jpeg";
-import dsImg from "../../images/dark-spectre-image.jpg";
-
-import { useState } from "react";
 
 const MEMBER_BIOS = {
   gavin: {
@@ -49,7 +46,7 @@ export default function Band() {
           police sketch. We swear.
         </h3>
         <Image width={400} src={band} alt="artist's rendering" />
-        <h2>WHAT WE'VE DONE:</h2>
+        <h2>WHAT WE'VE BEEN UP TO:</h2>
       </Stack>
     </Page>
   );
