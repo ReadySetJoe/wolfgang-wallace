@@ -43,7 +43,7 @@ export default function Admin() {
 
   const [progress, setProgress] = useState(0);
 
-  const handleFileInput = (e) => {
+  const handleFileInput = (e: any) => {
     const file = e.target.files[0];
     console.log("file.name", file.name);
     const params = {
