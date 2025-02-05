@@ -1,0 +1,113 @@
+.vintagePaper {
+  position: relative;
+  background-color: #faf3e0;
+  padding: 2rem;
+  max-width: 64rem;
+  margin: 3rem auto;
+  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.15))
+    drop-shadow(0 2px 2px rgba(0, 0, 0, 0.1))
+    drop-shadow(0 4px 4px rgba(0, 0, 0, 0.05));
+  overflow: visible;
+}
+
+.vintagePaperContainer {
+  position: relative;
+  padding: 2px;
+  margin: 3rem auto;
+  max-width: 64rem;
+  overflow: visible;
+}
+
+.vintagePaper::before {
+  content: "";
+  position: absolute;
+  left: 0px;
+  right: 0px;
+  height: 40px; /* Increased height */
+  top: -35px; /* Adjusted to match new height */
+  background-image: url("data:image/svg+xml,%3Csvg width='100' height='40' viewBox='0 0 100 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 40L8 28L15 36L25 24L30 34L40 22L45 38L55 20L60 32L70 18L75 36L80 24L85 34L90 26L95 36L100 40L100 0L0 0Z' fill='%23faf3e0'/%3E%3C/svg%3E");
+  background-size: 100px 40px; /* Larger pattern size */
+  background-repeat: repeat-x;
+  z-index: 1;
+  transform: rotate(180deg);
+}
+
+/* Side tears using gradients */
+/* .vintagePaperContainer::before,
+.vintagePaperContainer::after {
+  content: "";
+  position: absolute;
+  top: -20px;
+  bottom: -20px;
+  width: 20px;
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent 0px,
+    #faf3e0 2px,
+    transparent 4px,
+    #faf3e0 6px,
+    transparent 8px,
+    #faf3e0 10px
+  );
+  opacity: 0.8;
+  z-index: 0;
+}
+
+.vintagePaperContainer::before {
+  left: -15px;
+  transform: rotate(-2deg);
+}
+
+.vintagePaperContainer::after {
+  right: -15px;
+  transform: rotate(2deg);
+} */
+
+.paperTexture {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.5;
+  background-color: rgba(210, 180, 140, 0.1);
+  background-repeat: repeat;
+}
+
+.paperGradient {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.paperContent {
+  position: relative;
+  z-index: 1;
+}
+
+.vintagePaper::before,
+.vintagePaper::after {
+  animation: subtleShift 10s infinite ease-in-out;
+}
+
+/* Rest of the styles remain the same */
+.loreContainer {
+  max-width: 64rem;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.loreIntro {
+  font-size: 1.125rem;
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+
+.loreTitle {
+  font-size: 2.25rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+}
+
+.markdownContent {
+  color: black;
+  line-height: 1.6;
+}

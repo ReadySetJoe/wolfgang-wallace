@@ -1,74 +1,59 @@
-import { gql, useQuery } from "@apollo/client";
-import {
-  Card,
-  CardActionArea,
-  CardContent,
-  CardMedia,
-  Stack,
-  Typography,
-} from "@mui/material";
-
+import React from "react";
 import Page from "../../components/page";
+import content from "../../components/lore.md";
+import ReactMarkdown from "react-markdown";
+import styles from "../../styles/lore.module.css";
 
-const GET_LORE_PAGES = gql`
-  query GetLorePages {
-    getLorePages {
-      id
-      title
-      content
-      image
-    }
-  }
-`;
-
-export default function Lore() {
-  const { data } = useQuery(GET_LORE_PAGES);
-  const lorePages = data?.getLorePages ?? [];
+const VintagePaper: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => {
+  // Add some random rotation to enhance the jagged effect
+  const randomRotation = React.useMemo(() => {
+    return Math.random() * 0.4 - 0.2; // Random value between -0.2 and 0.2 degrees
+  }, []);
 
   return (
+    <div className={styles.vintagePaperContainer}>
+      <div
+        className={styles.vintagePaper}
+        style={{
+          transform: `rotate(${randomRotation}deg)`,
+        }}
+      >
+        {/* Paper texture with noise */}
+        <div className={styles.paperTexture} />
+
+        {/* Aging gradient effect */}
+        <div className={styles.paperGradient} />
+
+        {/* Random tears/imperfections */}
+        <div className={styles.paperTears} />
+
+        {/* Content container */}
+        <div className={styles.paperContent}>{children}</div>
+      </div>
+    </div>
+  );
+};
+
+export default function Lore() {
+  return (
     <Page>
-      <Stack>
-        <h1>Lore.</h1>
-        <h4>
+      <div className={styles.loreContainer}>
+        <h3 className={styles.loreIntro}>
           Welcome to our weird little corner of the internet. This is where we
           share the story of our songs, and invite you to share in the
           narrative.
-        </h4>
-        <h2>Welcome to the weird world of wolfgang wallace.</h2>
-      </Stack>
-      <Stack>
-        <h2>Recently Updated:</h2>
-        <div style={{ display: "flex", overflowX: "auto" }}>
-          {lorePages.map((page: any) => (
-            <a key={page.id} href={`/lore/${page.id}`}>
-              <Card raised sx={{ width: 300, margin: "1rem" }}>
-                <CardActionArea>
-                  <CardMedia
-                    component="img"
-                    height="300"
-                    image={page.image}
-                    alt={page.title}
-                  />
-                  <CardContent>
-                    <Typography gutterBottom variant="h5" component="div">
-                      {page.title || "TITLE_NOT_FOUND"}
-                    </Typography>
-                    <Typography
-                      variant="body2"
-                      color="text.secondary"
-                      whiteSpace="nowrap"
-                      textOverflow="ellipsis"
-                      overflow="hidden"
-                    >
-                      {page.content || "WORDS_NOT_FOUND"}
-                    </Typography>
-                  </CardContent>
-                </CardActionArea>
-              </Card>
-            </a>
-          ))}
-        </div>
-      </Stack>
+        </h3>
+
+        <h1 className={styles.loreTitle}>The Lore.</h1>
+
+        <VintagePaper>
+          <ReactMarkdown className={styles.markdownContent}>
+            {content}
+          </ReactMarkdown>
+        </VintagePaper>
+      </div>
     </Page>
   );
 }
