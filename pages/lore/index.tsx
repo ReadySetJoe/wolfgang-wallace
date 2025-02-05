@@ -46,6 +46,14 @@ export default function Lore() {
           narrative.
         </h3>
 
+        <a
+          href="https://github.com/ReadySetJoe/wolfgang-wallace/edit/main/components/lore.md"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <h3 className={styles.loreEditLink}>Help transcribe the story</h3>
+        </a>
+
         <h1 className={styles.loreTitle}>The Lore.</h1>
 
         <VintagePaper>

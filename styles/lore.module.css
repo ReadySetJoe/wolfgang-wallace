@@ -101,6 +101,10 @@
   line-height: 1.5;
 }
 
+.loreEditLink {
+  color: #666;
+}
+
 .loreTitle {
   font-size: 2.25rem;
   font-weight: bold;
