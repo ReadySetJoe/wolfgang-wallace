@@ -24,14 +24,14 @@ export default function Landing() {
           height={350}
           width={350}
           style={{
-            margin: "-15px 50px 0px 50px",
+            margin: "-40px 50px -15px 50px",
           }}
         >
           <polygon
             points="175 80, 310 310, 40 310"
             style={{
               stroke: "white",
-              strokeWidth: "40px",
+              strokeWidth: "20px",
             }}
           />
         </svg>

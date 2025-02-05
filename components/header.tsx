@@ -18,7 +18,6 @@ const Header = () => {
           <p>MYSTERY</p>
         </Link>
       </div>
-      <Link href="/admin">admin</Link>
     </div>
   );
 };
