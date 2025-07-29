@@ -21,10 +21,12 @@ export default function Landing() {
           </h3>
         </Link>
         <svg
-          height={350}
-          width={350}
+          viewBox="0 0 350 350"
           style={{
-            margin: "-40px 50px -15px 50px",
+            width: "min(350px, 80vw)",
+            height: "auto",
+            margin: "-40px auto -15px auto",
+            display: "block",
           }}
         >
           <polygon

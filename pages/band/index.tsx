@@ -8,32 +8,32 @@ import joeImg from "../../images/joe-image.jpeg";
 import wallyImg from "../../images/wally-image.jpeg";
 
 const MEMBER_BIOS = {
-  gavin: {
-    name: "Gavin",
-    position: "drummer",
-    bio: "some stuff about gavin",
+  wally: {
+    name: "Wally",
+    position: "songwriter, lead vox, rhthym guitar",
+    image: wallyImg,
   },
   joe: {
     name: "Joe",
     position: "harmony vox/lead guitar",
-    bio: "Some stuff about me",
     image: joeImg,
   },
-  wally: {
-    name: "Wally",
-    position: "songwriter, lead vox, rhthym guitar",
-    bio: "Some stuff about Wally",
-    image: wallyImg,
+  austin: {
+    name: "Austin",
+    position: "bass guitar",
+    image: null,
+  },
+  drummer: {
+    name: "Shane",
+    position: "drummer",
+    image: null, // Placeholder for drummer image
   },
   ds: {
     name: "The Dark Spectre",
-    position: "Artistic Director",
-    bio: "Some wacky stuff about the dark spectre",
+    position: "resident artist",
     image: dsImg,
   },
 };
-
-// TODO: Change from using static image hosting to just throwing it an S3 bucket
 
 export default function Band() {
   return (
@@ -45,8 +45,57 @@ export default function Band() {
           We're wolfgang wallace. This is an artist rendering. It is NOT a
           police sketch. We swear.
         </h3>
-        <Image width={400} src={band} alt="artist's rendering" />
-        <h2>WHAT WE'VE BEEN UP TO:</h2>
+        <Image
+          src={band}
+          alt="artist's rendering"
+          style={{ width: "100%", height: "auto", margin: "16px 0px" }}
+          sizes="(max-width: 600px) 100vw, 400px"
+        />
+        <h2>MEMBERS:</h2>
+        <Stack
+          direction={{ xs: "column", sm: "row" }}
+          sx={{
+            display: "grid",
+            gridTemplateColumns: {
+              xs: "1fr",
+              sm: "repeat(auto-fit, minmax(200px, 1fr))",
+            },
+            gap: 2,
+            justifyItems: "center",
+            alignItems: "center",
+          }}
+        >
+          {Object.entries(MEMBER_BIOS).map(([key, member]) => (
+            <Stack key={key} spacing={1} alignItems="center">
+              {member.image ? (
+                <Image
+                  src={member.image}
+                  alt={member.name}
+                  style={{
+                    width: "300px",
+                    height: "300px",
+                    borderRadius: "50%",
+                    objectFit: "cover",
+                    border: "2px solid white",
+                  }}
+                />
+              ) : (
+                <div
+                  style={{
+                    width: "300px",
+                    height: "300px",
+                    borderRadius: "50%",
+                    backgroundColor: "#ccc",
+                    border: "2px solid white",
+                  }}
+                />
+              )}
+
+              <h3>{member.name}</h3>
+              <p>{member.position}</p>
+            </Stack>
+          ))}
+        </Stack>
       </Stack>
     </Page>
   );

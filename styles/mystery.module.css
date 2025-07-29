@@ -1,0 +1,365 @@
+.initialContainer {
+  text-align: center;
+  padding: 2rem;
+}
+
+.mysteryInput {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #666;
+  color: white;
+  font-family: "EB Garamond", serif;
+  font-size: 1.2rem;
+  padding: 0.5rem;
+  text-align: center;
+  width: 200px;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.mysteryInput:focus {
+  border-bottom-color: #fff;
+}
+
+.fadeIn {
+  animation: fadeIn 2s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Void Phase Styles */
+.voidContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #000;
+  cursor: crosshair;
+  overflow: hidden;
+  animation: voidPulse 30s infinite;
+}
+
+@keyframes voidPulse {
+  0%,
+  100% {
+    background: #000;
+  }
+  50% {
+    background: #050505;
+  }
+}
+
+.voidText {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #ffffff;
+  font-size: 2rem;
+  font-style: italic;
+  user-select: none;
+  animation: voidTextPulse 4s infinite;
+}
+
+@keyframes voidTextPulse {
+  0%,
+  100% {
+    color: #7c7c7c;
+  }
+  50% {
+    color: #222;
+  }
+}
+
+.voidHint {
+  position: absolute;
+  bottom: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #ffffff;
+  font-size: 0.9rem;
+  font-style: italic;
+  opacity: 0;
+  animation: hintAppear 3s forwards;
+}
+
+@keyframes hintAppear {
+  to {
+    opacity: 1;
+    color: #ffffff;
+  }
+}
+
+.eyes {
+  position: absolute;
+  bottom: 50px;
+  right: 50px;
+  display: flex;
+  gap: 20px;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.eye {
+  width: 15px;
+  height: 15px;
+  background: radial-gradient(
+    circle,
+    rgba(255, 0, 0, 0.8) 0%,
+    rgba(255, 0, 0, 0.4) 50%,
+    transparent 70%
+  );
+  border-radius: 50%;
+  animation: eyePulse 3s infinite;
+  box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+}
+
+.eye:nth-child(2) {
+  animation-delay: 0.5s;
+}
+
+@keyframes eyePulse {
+  0%,
+  100% {
+    transform: scale(1);
+    filter: brightness(0.8);
+  }
+  50% {
+    transform: scale(1.2);
+    filter: brightness(1.2);
+  }
+}
+
+.clickFeedback {
+  position: absolute;
+  bottom: 100px;
+  right: 50px;
+  color: rgb(255, 255, 255);
+  font-size: 0.8rem;
+  font-style: italic;
+  animation: fadeIn 1s ease;
+}
+
+/* Revealed Phase Styles */
+.revealedContainer {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.typewriter {
+  overflow: hidden;
+  white-space: nowrap;
+  animation: typewriter 3s steps(40) 1s forwards;
+  border-right: 2px solid white;
+  animation: typewriter 3s steps(40) 1s forwards, blink 0.75s infinite;
+  max-width: 100%;
+}
+
+@keyframes typewriter {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes blink {
+  50% {
+    border-color: transparent;
+  }
+}
+
+.riddleBox {
+  margin-top: 3rem;
+  padding: 2rem;
+  border: 1px solid #333;
+  background: rgba(255, 255, 255, 0.02);
+  position: relative;
+}
+
+.riddleBox::before {
+  content: "❦";
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #000;
+  padding: 0 10px;
+  font-size: 1.5rem;
+}
+
+.riddleBox blockquote {
+  font-style: italic;
+  margin: 1.5rem 0;
+  padding: 0 1rem;
+  border-left: 2px solid #444;
+  line-height: 1.6;
+}
+
+.hint {
+  font-size: 0.9rem;
+  color: #666;
+  margin-top: 1rem;
+  font-style: italic;
+}
+
+/* Puzzle Page Styles */
+.puzzleContainer {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.storyText {
+  margin: 2rem 0;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.cipherBox {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid #444;
+  padding: 2rem;
+  margin: 2rem 0;
+  position: relative;
+}
+
+.cipherGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin: 2rem 0;
+  font-size: 1.2rem;
+}
+
+.cipherMessage {
+  font-size: 2rem;
+  letter-spacing: 0.5rem;
+  margin: 2rem 0;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 1rem;
+  border-radius: 4px;
+}
+
+.cipherWord {
+  margin: 0.5rem 0;
+  text-align: center;
+}
+
+.submitButton {
+  background: transparent;
+  border: 1px solid #666;
+  color: white;
+  padding: 0.5rem 2rem;
+  margin-left: 1rem;
+  cursor: pointer;
+  font-family: "EB Garamond", serif;
+  font-size: 1rem;
+  transition: all 0.3s;
+}
+
+.submitButton:hover {
+  border-color: white;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.successMessage {
+  color: #0f0;
+  animation: glow 1s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  from { text-shadow: 0 0 5px #0f0; }
+  to { text-shadow: 0 0 20px #0f0, 0 0 30px #0f0; }
+}
+
+.attemptFeedback {
+  color: #f66;
+  font-style: italic;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+}
+
+.escapeHatch {
+  margin-top: 3rem;
+  font-size: 0.9rem;
+  opacity: 0.7;
+}
+
+.escapeHatch a {
+  color: #888;
+  text-decoration: underline;
+}
+
+/* Updated Cipher Styles */
+.decodedMessage {
+  font-size: 1.8rem;
+  letter-spacing: 0.3rem;
+  margin: 2rem 0;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid #333;
+  font-family: monospace;
+  min-height: 3rem;
+}
+
+.decodedWord {
+  margin: 0.5rem 0;
+  text-align: center;
+}
+
+.knownCipher {
+  font-size: 1.1rem;
+  padding: 0.5rem;
+  background: rgba(0, 255, 0, 0.05);
+  border: 1px solid rgba(0, 255, 0, 0.2);
+  border-radius: 4px;
+}
+
+.cipherInputGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin: 2rem 0;
+}
+
+.cipherInput {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.2rem;
+}
+
+.letterInput {
+  width: 2rem;
+  height: 2rem;
+  text-align: center;
+  background: transparent;
+  border: 1px solid #666;
+  color: white;
+  font-family: monospace;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+}
+
+.letterInput:focus {
+  outline: none;
+  border-color: white;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.submitButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
