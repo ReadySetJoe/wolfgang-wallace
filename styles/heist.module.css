@@ -1020,13 +1020,55 @@
     transform-origin: 50% 14px;
   }
 
+  .vaultControls {
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .dialNavigation {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+  
+  .dialButton,
+  .navButton,
+  .submitButton {
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
+    min-width: 120px;
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  .dialIndicator {
+    width: 100%;
+    order: -1;
+    margin-bottom: 1rem;
+  }
+  
+  .vaultHint {
+    font-size: 0.9rem;
+    max-width: 300px;
+    padding: 0 1rem;
+  }
+  
   .finalButtons {
     flex-direction: column;
     align-items: center;
+    gap: 1rem;
   }
 
   .escapeOptions {
     flex-direction: column;
     align-items: center;
+    gap: 1rem;
+  }
+  
+  .retryButton,
+  .fleeButton {
+    width: 200px;
+    padding: 1rem;
+    font-size: 1rem;
   }
 }

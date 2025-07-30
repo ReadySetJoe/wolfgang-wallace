@@ -13,6 +13,7 @@ export default function Mystery() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [showEyes, setShowEyes] = useState(false);
   const [eyeOpacity, setEyeOpacity] = useState(0);
+  const [inputValue, setInputValue] = useState("");
 
   useEffect(() => {
     // After 15 seconds in the void, show a subtle hint
@@ -63,19 +64,59 @@ export default function Mystery() {
     }
   };
 
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (phase !== "initial") return;
+
+    const value = e.target.value.toLowerCase();
+    setInputValue(value);
+
+    // Check if the current character matches the expected sequence
+    if (value.length > 0) {
+      const lastChar = value[value.length - 1];
+      if (lastChar === SECRET_KEYS[secretKeyNdx]) {
+        setSecretKeyNdx(secretKeyNdx + 1);
+      } else {
+        setSecretKeyNdx(0);
+      }
+    } else {
+      setSecretKeyNdx(0);
+    }
+
+    // Also check if they've typed the complete word
+    if (value === "nothing") {
+      setSecretKeyNdx(SECRET_KEYS.length);
+    }
+  };
+
   useEffect(() => {
     if (secretKeyNdx === SECRET_KEYS.length) {
       setTimeout(() => setPhase("void"), 5000);
     }
   }, [secretKeyNdx]);
 
-  const handleVoidClick = (e: React.MouseEvent) => {
+  const handleVoidClick = (e: React.MouseEvent | React.TouchEvent) => {
     const rect = e.currentTarget.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
+    let clientX, clientY;
+
+    if ("touches" in e && e.touches.length > 0) {
+      // Touch event
+      clientX = e.touches[0].clientX;
+      clientY = e.touches[0].clientY;
+    } else if ("clientX" in e) {
+      // Mouse event
+      clientX = e.clientX;
+      clientY = e.clientY;
+    } else {
+      return;
+    }
+
+    const x = clientX - rect.left;
+    const y = clientY - rect.top;
 
     // Hidden clickable area in the bottom-right corner (The Dark Specter's eyes)
-    if (x > rect.width - 150 && y > rect.height - 150) {
+    // Make the clickable area larger on mobile
+    const clickAreaSize = window.innerWidth <= 768 ? 200 : 150;
+    if (x > rect.width - clickAreaSize && y > rect.height - clickAreaSize) {
       setVoidClicks(voidClicks + 1);
 
       if (voidClicks >= 2) {
@@ -84,11 +125,25 @@ export default function Mystery() {
     }
   };
 
-  const handleMouseMove = (e: React.MouseEvent) => {
+  const handleMouseMove = (e: React.MouseEvent | React.TouchEvent) => {
     const rect = e.currentTarget.getBoundingClientRect();
+    let clientX, clientY;
+
+    if ("touches" in e && e.touches.length > 0) {
+      // Touch event
+      clientX = e.touches[0].clientX;
+      clientY = e.touches[0].clientY;
+    } else if ("clientX" in e) {
+      // Mouse event
+      clientX = e.clientX;
+      clientY = e.clientY;
+    } else {
+      return;
+    }
+
     setMousePosition({
-      x: e.clientX - rect.left,
-      y: e.clientY - rect.top,
+      x: clientX - rect.left,
+      y: clientY - rect.top,
     });
   };
 
@@ -97,7 +152,9 @@ export default function Mystery() {
       <div
         className={styles.voidContainer}
         onClick={handleVoidClick}
+        onTouchEnd={handleVoidClick}
         onMouseMove={handleMouseMove}
+        onTouchMove={handleMouseMove}
       >
         {/* Cursor bloom effect */}
         <div
@@ -155,10 +212,18 @@ export default function Mystery() {
       <div className={styles.initialContainer}>
         <p>What is in the box below?</p>
         <input
-          value={""}
+          value={inputValue}
+          onChange={handleInputChange}
           onKeyDown={handleKeyPress}
           className={styles.mysteryInput}
-          placeholder="..."
+          placeholder=""
+          autoComplete="off"
+          autoCapitalize="none"
+          autoCorrect="off"
+          spellCheck="false"
+          style={{
+            color: "black",
+          }}
         />
         {secretKeyNdx === SECRET_KEYS.length && (
           <h1 className={styles.fadeIn}>Very good, let's continue...</h1>

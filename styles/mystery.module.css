@@ -15,6 +15,10 @@
   width: 200px;
   outline: none;
   transition: border-color 0.3s;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  touch-action: manipulation;
 }
 
 .mysteryInput:focus {
@@ -193,19 +197,7 @@
 .typewriter {
   overflow: hidden;
   white-space: nowrap;
-  animation: typewriter 3s steps(40) 1s forwards;
-  border-right: 2px solid white;
-  animation: typewriter 3s steps(40) 1s forwards, blink 0.75s infinite;
   max-width: 100%;
-}
-
-@keyframes typewriter {
-  from {
-    width: 0;
-  }
-  to {
-    width: 100%;
-  }
 }
 
 @keyframes blink {
@@ -354,6 +346,114 @@
   text-decoration: underline;
 }
 
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+  .initialContainer {
+    padding: 1rem;
+    min-height: 70vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .mysteryInput {
+    width: 100%;
+    max-width: 300px;
+    font-size: 1.1rem;
+    padding: 0.8rem;
+    /* Prevent zoom on iOS */
+    font-size: 16px;
+    margin-top: 2rem;
+  }
+
+  .voidContainer {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .voidHint {
+    font-size: 0.8rem;
+    padding: 0 1rem;
+  }
+
+  .eyes {
+    bottom: 30px;
+    right: 30px;
+  }
+
+  .clickFeedback {
+    bottom: 80px;
+    right: 30px;
+    font-size: 0.7rem;
+  }
+
+  /* Cipher page mobile styles */
+  .puzzleContainer {
+    padding: 1rem;
+  }
+
+  .cipherMessage {
+    font-size: 1.5rem;
+    letter-spacing: 0.3rem;
+  }
+
+  .cipherInputGrid {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+
+  .cipherInput {
+    font-size: 1rem;
+    justify-content: space-between;
+    padding: 0.5rem;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 4px;
+  }
+
+  .letterInput {
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: 1.1rem;
+    /* Prevent zoom on iOS */
+    font-size: 16px;
+  }
+
+  .submitButton {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.1rem;
+    margin: 1rem 0;
+  }
+
+  .decodedMessage {
+    font-size: 1.3rem;
+    letter-spacing: 0.2rem;
+  }
+
+  .revealedContainer {
+    padding: 1rem;
+  }
+
+  .riddleBox {
+    padding: 1rem;
+    margin-top: 2rem;
+  }
+
+  .riddleBox blockquote {
+    padding: 0 0.5rem;
+    font-size: 0.9rem;
+  }
+
+  .typewriter {
+    font-size: 0.9rem;
+    white-space: normal;
+  }
+}
+
 /* Updated Cipher Styles */
 .decodedMessage {
   font-size: 1.8rem;
@@ -403,6 +503,9 @@
   font-family: monospace;
   font-size: 1.2rem;
   text-transform: uppercase;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
 
 .letterInput:focus {
