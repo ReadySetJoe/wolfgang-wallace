@@ -15,15 +15,18 @@ export default function Lore() {
   const songFiles = [
     { file: "bankrupt.txt", title: "Bankrupt" },
     { file: "comatose.txt", title: "Comatose" },
-    { file: "compulsory-evacuation-device.txt", title: "Compulsory Evacuation Device" },
+    {
+      file: "compulsory-evacuation-device.txt",
+      title: "Compulsory Evacuation Device",
+    },
     { file: "consequences.txt", title: "Consequences" },
-    { file: "dance-macabre.txt", title: "Dance Macabre" },
+    { file: "dance-macabre.txt", title: "The Dance Macabre" },
     { file: "harbor.txt", title: "Harbor" },
     { file: "keep-out.txt", title: "Keep Out" },
     { file: "napoleon.txt", title: "Napoleon" },
     { file: "smile-wide.txt", title: "Smile Wide" },
-    { file: "tarot.txt", title: "Tarot" },
-    { file: "the-long-con.txt", title: "The Long Con" }
+    { file: "tarot.txt", title: "Tarot Arcana XVI: The Tower" },
+    { file: "the-long-con.txt", title: "The Long Con" },
   ];
 
   useEffect(() => {
@@ -34,7 +37,7 @@ export default function Lore() {
           const lyrics = await response.text();
           return { title, lyrics };
         });
-        
+
         const loadedSongs = await Promise.all(songPromises);
         setSongs(loadedSongs);
         setLoading(false);
@@ -50,23 +53,99 @@ export default function Lore() {
   return (
     <Page>
       <div className={styles.loreContainer}>
-        <h3 className={styles.loreIntro}>
-          Welcome to our weird little corner of the internet. This is where we
-          share the story of our songs, and invite you to share in the
-          narrative.
-        </h3>
-
         <h1 className={styles.loreTitle}>The Lore.</h1>
 
-        <div className={styles.wipNotice}>
-          <p>🚧 <strong>Work in Progress</strong> 🚧</p>
-          <p>We're currently crafting the full narrative experience that connects all our songs. 
-             In the meantime, explore our lyrics below and piece together the mystery yourself...</p>
+        <div className={styles.vintagePaperContainer}>
+          <div className={styles.vintagePaper}>
+            <div className={styles.paperTexture}></div>
+            <div className={styles.paperGradient}></div>
+            <div className={styles.paperContent}>
+              <h3>Act I: J. Powers - The Fall from Grace</h3>
+              <p>
+                Our tale begins with J. Powers, a man consumed by his own mind (
+                <em>Napoleon</em>). Lost in fantasies of grandeur and
+                immortality, he escapes into delusions where he is revered as a
+                god. But beneath the facade lies a broken soul - a narcissist, a
+                liar, desperate to blame his failings on anything but himself.
+              </p>
+
+              <p>
+                Enter the femme fatale. She sees his silver tongue and offers
+                him a new life as a conman (<em>The Long Con</em>). Together
+                they become a modern Bonnie and Clyde, running schemes and
+                stealing identities. Their cons grow more elaborate and
+                dangerous - Powers begins selling faulty aircraft parts to
+                defense contractors like Lockheed Martin, prioritizing profit
+                over safety.
+              </p>
+
+              <p>
+                The inevitable comes to pass. His house of cards collapses (
+                <em>Smile Wide</em>, <em>Keep Out</em>), and J. Powers finds
+                himself at the bank, making his final statement (
+                <em>Bankrupt</em>). The vault door closes, sealing away not just
+                his assets, but his last shred of dignity. In desperation, he
+                turns to the occult (<em>Tarot Arcana XVI: The Tower</em>),
+                consulting cards and spirits for supernatural solutions to his
+                earthly problems.
+              </p>
+
+              <h3>Act II: Wolfgang Wallace - The Crash</h3>
+              <p>
+                Enter Wolfgang Wallace, a skilled pilot whose fate becomes
+                tragically intertwined with Powers' crimes. Flying a Lockheed
+                Martin aircraft equipped with J. Powers' faulty parts, Wolfgang
+                suddenly finds himself in mortal danger (
+                <em>Compulsory Evacuation Device</em>). The defective components
+                fail at the worst possible moment, sending his aircraft
+                spiraling toward disaster.
+              </p>
+
+              <p>
+                Wolfgang survives the crash, but barely. He slips into a
+                comatose state (<em>Comatose</em>) and is ultimately brought
+                back, but has become more machine than man, (
+                <em>Automatic Mannequin</em>) suspended between life and death.
+                When he finally awakens, he's no longer the man he once was -
+                transformed by trauma and loss, driven by a singular purpose: to
+                find the man responsible for his suffering.
+              </p>
+
+              <h3>Act III: The Hunt and the Sacrifice</h3>
+              <p>
+                Wolfgang's investigation leads him to the harbor (
+                <em>Harbor</em>), where in his rage and desperation, he
+                accidentally kills his own beloved. Consumed by guilt and fury,
+                he tracks down J. Powers to face the consequences of his actions
+                (<em>Consequences</em>).
+              </p>
+
+              <p>
+                But Wolfgang's plan is darker than simple revenge. On Día de los
+                Muertos, he performs a bloodstained ritual (
+                <em>The Dance Macabre</em>), using J. Powers as a sacrifice in
+                an occult ritual to resurrect his lost love. The ritual
+                succeeds, but at a terrible cost - both men are transformed in
+                the process, merging into something else entirely: The Dark
+                Specter. Neither alive nor dead, they exist in the void between
+                worlds, forever bound by the consequences of greed, revenge, and
+                forbidden love.
+              </p>
+
+              <p className={styles.epilogue}>
+                <em>
+                  "Was it worth it?" she asked.
+                  <br />
+                  "For you, of course it is."
+                </em>
+              </p>
+            </div>
+          </div>
         </div>
 
         <div className={styles.lyricsSection}>
           <h2>Song Lyrics:</h2>
-          
+
           {loading ? (
             <p className={styles.loading}>Loading songs...</p>
           ) : (
@@ -78,9 +157,11 @@ export default function Lore() {
                     className={`${styles.songButton} ${
                       selectedSong === song.title ? styles.selected : ""
                     }`}
-                    onClick={() => setSelectedSong(
-                      selectedSong === song.title ? null : song.title
-                    )}
+                    onClick={() =>
+                      setSelectedSong(
+                        selectedSong === song.title ? null : song.title
+                      )
+                    }
                   >
                     {song.title}
                   </button>
@@ -92,12 +173,11 @@ export default function Lore() {
                   <h3>{selectedSong}</h3>
                   <div className={styles.lyricsText}>
                     {songs
-                      .find(song => song.title === selectedSong)
-                      ?.lyrics.split('\n')
+                      .find((song) => song.title === selectedSong)
+                      ?.lyrics.split("\n")
                       .map((line, index) => (
-                        <p key={index}>{line || '\u00A0'}</p>
-                      ))
-                    }
+                        <p key={index}>{line || "\u00A0"}</p>
+                      ))}
                   </div>
                 </div>
               )}

@@ -42,7 +42,7 @@
   width: 100vw;
   height: 100vh;
   background: #000;
-  cursor: crosshair;
+  cursor: none;
   overflow: hidden;
   animation: voidPulse 30s infinite;
 }
@@ -67,6 +67,7 @@
   font-style: italic;
   user-select: none;
   animation: voidTextPulse 4s infinite;
+  z-index: 2;
 }
 
 @keyframes voidTextPulse {
@@ -76,6 +77,37 @@
   }
   50% {
     color: #222;
+  }
+}
+
+.cursorBloom {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.15) 0%,
+    rgba(255, 255, 255, 0.1) 20%,
+    rgba(255, 255, 255, 0.05) 40%,
+    transparent 70%
+  );
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.3s ease;
+  z-index: 1;
+  animation: bloomPulse 3s ease-in-out infinite;
+}
+
+@keyframes bloomPulse {
+  0%,
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.1);
+    opacity: 1;
   }
 }
 
@@ -89,6 +121,7 @@
   font-style: italic;
   opacity: 0;
   animation: hintAppear 3s forwards;
+  z-index: 2;
 }
 
 @keyframes hintAppear {
@@ -106,6 +139,7 @@
   gap: 20px;
   transition: opacity 0.3s ease;
   pointer-events: none;
+  z-index: 3;
 }
 
 .eye {
@@ -146,6 +180,7 @@
   font-size: 0.8rem;
   font-style: italic;
   animation: fadeIn 1s ease;
+  z-index: 3;
 }
 
 /* Revealed Phase Styles */
@@ -218,7 +253,6 @@
   max-width: 700px;
   margin: 0 auto;
   padding: 2rem;
-  text-align: center;
 }
 
 .storyText {
@@ -237,7 +271,7 @@
 
 .cipherGrid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
   margin: 2rem 0;
   font-size: 1.2rem;
@@ -246,7 +280,7 @@
 .cipherMessage {
   font-size: 2rem;
   letter-spacing: 0.5rem;
-  margin: 2rem 0;
+  margin: 1rem 0;
   background: rgba(255, 255, 255, 0.05);
   padding: 1rem;
   border-radius: 4px;
@@ -276,12 +310,30 @@
 
 .successMessage {
   color: #0f0;
-  animation: glow 1s ease-in-out infinite alternate;
+  animation: glowGreen 1s ease-in-out infinite alternate;
 }
 
-@keyframes glow {
-  from { text-shadow: 0 0 5px #0f0; }
-  to { text-shadow: 0 0 20px #0f0, 0 0 30px #0f0; }
+.errorMessage {
+  color: #f66;
+  animation: glowRed 1s ease-in-out infinite alternate;
+}
+
+@keyframes glowGreen {
+  from {
+    text-shadow: 0 0 5px #0f0;
+  }
+  to {
+    text-shadow: 0 0 20px #0f0, 0 0 30px #0f0;
+  }
+}
+
+@keyframes glowRed {
+  from {
+    text-shadow: 0 0 5px #f66;
+  }
+  to {
+    text-shadow: 0 0 20px #f66, 0 0 30px #f66;
+  }
 }
 
 .attemptFeedback {

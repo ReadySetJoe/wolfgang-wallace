@@ -433,7 +433,7 @@
 
 .timerDisplay {
   position: absolute;
-  top: 20px;
+  bottom: 20px;
   right: 20px;
   font-size: 2rem;
   font-weight: bold;
@@ -567,6 +567,7 @@
   justify-content: center;
   position: relative;
   transition: all 0.3s ease;
+  overflow: hidden;
 }
 
 .dial.activeDial {
@@ -639,6 +640,7 @@
 }
 
 .dialIndicator {
+  text-align: center;
   color: #d4af37;
   font-weight: bold;
   font-size: 1.1rem;
@@ -717,11 +719,11 @@
 }
 
 .vaultWarning {
-  position: absolute;
   bottom: 100px;
   color: #ff0000;
   font-weight: bold;
   font-size: 1.2rem;
+  padding: 1rem;
   animation: warningPulse 1s ease-in-out infinite;
 }
 
@@ -772,11 +774,12 @@
 }
 
 @keyframes documentPulse {
-  0%, 100% { 
+  0%,
+  100% {
     transform: scale(1);
     opacity: 1;
   }
-  50% { 
+  50% {
     transform: scale(1.05);
     opacity: 0.9;
   }
@@ -987,7 +990,7 @@
 
   .vaultDoor {
     width: 300px;
-    height: 300px;
+    height: 400px;
   }
 
   .vaultPlaque {
@@ -1008,6 +1011,13 @@
 
   .dialNumber {
     font-size: 1.2rem;
+  }
+
+  .tick {
+    width: 1px;
+    height: 6px;
+    top: 1px;
+    transform-origin: 50% 14px;
   }
 
   .finalButtons {

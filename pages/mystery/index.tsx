@@ -1,18 +1,15 @@
 import { useState, useEffect } from "react";
-import { useRouter } from "next/router";
 import Page from "../../components/page";
 import styles from "../../styles/mystery.module.css";
 
 const SECRET_KEYS = ["n", "o", "t", "h", "i", "n", "g"];
 
 export default function Mystery() {
-  const router = useRouter();
   const [secretKeyNdx, setSecretKeyNdx] = useState(0);
   const [phase, setPhase] = useState<"initial" | "void" | "revealed">(
     "initial"
   );
   const [voidClicks, setVoidClicks] = useState(0);
-  const [showHint, setShowHint] = useState(false);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [showEyes, setShowEyes] = useState(false);
   const [eyeOpacity, setEyeOpacity] = useState(0);
@@ -20,11 +17,9 @@ export default function Mystery() {
   useEffect(() => {
     // After 15 seconds in the void, show a subtle hint
     if (phase === "void") {
-      const timer = setTimeout(() => setShowHint(true), 15000);
-      // After 30 seconds, start showing eyes
-      const eyeTimer = setTimeout(() => setShowEyes(true), 30000);
+      // After 15 seconds, start showing eyes
+      const eyeTimer = setTimeout(() => setShowEyes(true), 15000);
       return () => {
-        clearTimeout(timer);
         clearTimeout(eyeTimer);
       };
     }
@@ -79,7 +74,7 @@ export default function Mystery() {
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
 
-    // Hidden clickable area in the bottom-right corner (The Dark Spectre's eyes)
+    // Hidden clickable area in the bottom-right corner (The Dark Specter's eyes)
     if (x > rect.width - 150 && y > rect.height - 150) {
       setVoidClicks(voidClicks + 1);
 
@@ -104,12 +99,19 @@ export default function Mystery() {
         onClick={handleVoidClick}
         onMouseMove={handleMouseMove}
       >
+        {/* Cursor bloom effect */}
+        <div
+          className={styles.cursorBloom}
+          style={{
+            left: `${mousePosition.x}px`,
+            top: `${mousePosition.y}px`,
+          }}
+        />
+
         <div className={styles.voidText}>bienvenue dans le vide</div>
-        {showHint && (
-          <div className={styles.voidHint}>
-            The Dark Spectre watches from the shadows...
-          </div>
-        )}
+        <div className={styles.voidHint}>
+          The Dark Specter watches from the shadows...
+        </div>
         <div className={styles.eyes} style={{ opacity: eyeOpacity }}>
           <div className={styles.eye} />
           <div className={styles.eye} />
@@ -127,19 +129,18 @@ export default function Mystery() {
     return (
       <Page>
         <div className={styles.revealedContainer}>
-          <h1>The Con Begins</h1>
+          <h1>Act I - The Long Con</h1>
           <p className={styles.typewriter}>
-            You've found The Dark Spectre's eye. But this is just the beginning
-            of The Long Con...
+            You've found The Dark Specter's eye. But this is just the beginning.
           </p>
           <div className={styles.riddleBox}>
             <p>To proceed deeper into the void, solve this riddle:</p>
             <blockquote>
               "In our song of deception, two names dance as one.
               <br />
-              One steals, one is stolen from, their game never done.
+              ______ and ______, a tale of the undone.
               <br />
-              Find the path to a new page, add a dash in between,
+              To find the path to a new page, add a dash in between,
               <br />
               To discover the truth that lies unseen."
             </blockquote>

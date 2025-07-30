@@ -9,8 +9,7 @@ interface CipherMap {
 
 export default function BonnieClyde() {
   const router = useRouter();
-  const [showHint, setShowHint] = useState(false);
-  const [attempts, setAttempts] = useState(0);
+  const [incorrect, setIncorrect] = useState(false);
   const [solved, setSolved] = useState(false);
 
   // The phrase: "MY FINAL STATEMENT"
@@ -35,11 +34,7 @@ export default function BonnieClyde() {
     Object.entries(fullCipher).forEach(([symbol, letter]) => {
       const shouldReveal = revealedLetters.includes(letter);
       initial[symbol] = shouldReveal ? letter : "";
-      console.log(
-        `Symbol ${symbol} -> Letter ${letter} -> Revealed: ${shouldReveal} -> Value: ${initial[symbol]}`
-      );
     });
-    console.log("Final initial userCipher:", initial);
     return initial;
   });
 
@@ -60,16 +55,12 @@ export default function BonnieClyde() {
   const decodedPhrase = React.useMemo(() => {
     const segments = segmentGraphemes(cipherPhrase);
     const result = segments
-      .map((char, index) => {
+      .map((char) => {
         if (char === " ") {
-          console.log(`Char ${index}: 'SPACE' -> 'SPACE'`);
           return " ";
         }
         const letter = userCipher[char];
         const decoded = letter && letter !== "" ? letter : "?";
-        console.log(
-          `Char ${index}: '${char}' -> '${decoded}' (from userCipher: ${letter})`
-        );
         return decoded;
       })
       .join("");
@@ -81,15 +72,10 @@ export default function BonnieClyde() {
   const cipherWords = cipherPhrase.split(" ");
   const decodedWords = decodedPhrase.split(" ");
 
-  useEffect(() => {
-    // Show hint after 3 wrong attempts
-    if (attempts >= 3 && !solved) {
-      setShowHint(true);
-    }
-  }, [attempts, solved]);
-
   const handleSymbolUpdate = (symbol: string, value: string) => {
     if (value.length > 1) return;
+
+    setIncorrect(false);
 
     setUserCipher({
       ...userCipher,
@@ -107,22 +93,21 @@ export default function BonnieClyde() {
         router.push("/mystery/the-heist");
       }, 3000);
     } else {
-      setAttempts(attempts + 1);
+      setIncorrect(true);
     }
   };
 
   return (
     <Page>
       <div className={styles.puzzleContainer}>
-        <h1>The Long Con - Act II</h1>
+        <h1>Act II - Bankruptcy</h1>
 
         <div className={styles.storyText}>
-          <p>You've found us out... or have you?</p>
           <p>A message from the void, written in symbols...</p>
+          <p>It's equivalent to announcing you're a failure</p>
         </div>
 
         <div className={styles.cipherBox}>
-          <h3>The Cipher:</h3>
           <div className={styles.cipherMessage}>
             {cipherWords.map((word, index) => (
               <div key={index} className={styles.cipherWord}>
@@ -141,14 +126,10 @@ export default function BonnieClyde() {
 
           {!solved && (
             <>
-              <h4>Known Translations:</h4>
               <div className={styles.cipherGrid}>
                 {Object.entries(userCipher)
                   .filter(([_, letter]) => {
                     const isRevealed = revealedLetters.includes(letter);
-                    console.log(
-                      `Filtering: ${_} -> ${letter} -> Revealed: ${isRevealed}`
-                    );
                     return isRevealed;
                   })
                   .map(([symbol, letter]) => (
@@ -158,7 +139,6 @@ export default function BonnieClyde() {
                   ))}
               </div>
 
-              <h4>Unknown Symbols:</h4>
               <div className={styles.cipherInputGrid}>
                 {Object.entries(userCipher)
                   .filter(([_, letter]) => !revealedLetters.includes(letter))
@@ -197,14 +177,10 @@ export default function BonnieClyde() {
             </div>
           )}
 
-          {attempts > 0 && !solved && (
-            <p className={styles.attemptFeedback}>
-              {attempts === 1 && "Not quite... try different letters."}
-              {attempts === 2 &&
-                "Think about common English words and patterns."}
-              {attempts >= 3 &&
-                "The second word ends with 'AL' - what could it be?"}
-            </p>
+          {incorrect && (
+            <div className={styles.errorMessage}>
+              <p>Incorrect solution. Try again</p>
+            </div>
           )}
         </div>
       </div>

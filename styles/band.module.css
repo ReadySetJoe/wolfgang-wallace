@@ -1,54 +1,293 @@
-
-.grow {
-    height: 200;
-    margin: 0;
-    transition: all .2s ease-in-out;
+.bandContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
 }
 
-.grow:hover {
-    transform: scale(1.1);
-    cursor: pointer;
+.bandHeader {
+  text-align: center;
+  margin-bottom: 3rem;
 }
 
-@media only screen and (min-width: 768px) {
-    .grow {
-        height: 500
-    }
+.bandTitle {
+  font-size: 3.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 }
 
-.slideDown {
-    width: 100%;
-    overflow: hidden;
+.tagline {
+  font-size: 1.3rem;
+  color: #ccc;
+  margin-bottom: 2rem;
 }
 
-.slideDown div {
-    animation: 1s slide-down;
-    margin-top: 0%;
+.bandImageContainer {
+  text-align: center;
+  margin: 3rem 0;
 }
 
-@keyframes slide-down {
-    from {
-        margin-top: -100%;
-        height: 150%;
-    }
-
-    to {
-        margin-top: 0%;
-        height: 100%;
-    }
+.bandImage {
+  width: 100%;
+  height: auto;
+  max-width: 800px;
+  border-radius: 10px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s ease;
 }
 
-.image-container {
-    width: 100%;
+.bandImage:hover {
+  transform: scale(1.02);
 }
 
-.image-container > div {
-    position: unset !important;
+.imageCaption {
+  margin-top: 1rem;
+  font-style: italic;
+  color: #888;
+  font-size: 0.9rem;
 }
 
-.image-container .image {
-    object-fit: contain;
-    width: 100% !important;
-    position: relative !important;
-    height: unset !important;
+.manifesto {
+  background: linear-gradient(135deg, #2a2a2a, #1a1a1a);
+  border: 2px solid white;
+  border-radius: 10px;
+  padding: 2rem;
+  margin: 3rem 0;
+  text-align: center;
+}
+
+.manifesto h2 {
+  color: white;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.manifesto p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #e0e0e0;
+}
+
+.membersTitle {
+  font-size: 2.5rem;
+  text-align: center;
+  margin: 4rem 0 3rem 0;
+  color: white;
+}
+
+.membersGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 3rem;
+  margin-bottom: 4rem;
+}
+
+.memberCard {
+  border-radius: 15px;
+  padding: 2rem;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.memberCard:hover {
+  border-color: white;
+  transform: translateY(-5px);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+}
+
+.memberImageContainer {
+  position: relative;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.memberImage {
+  width: 300px !important;
+  height: 300px !important;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid white;
+  transition: all 0.3s ease;
+}
+
+.memberImage:hover {
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+}
+
+.memberImagePlaceholder {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #333, #111);
+  border: 3px solid white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+}
+
+.memberImagePlaceholder::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: repeating-linear-gradient(
+    45deg,
+    rgba(255, 0, 0, 0.1),
+    rgba(255, 0, 0, 0.1) 10px,
+    transparent 10px,
+    transparent 20px
+  );
+}
+
+.placeholderText {
+  font-size: 1rem;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+  z-index: 1;
+  position: relative;
+}
+
+.memberStatus {
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.9);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  border: 1px solid white;
+  white-space: nowrap;
+}
+
+.memberInfo {
+  text-align: center;
+}
+
+.memberName {
+  font-size: 1.3rem;
+  color: white;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+.memberTitle {
+  font-size: 1rem;
+  color: #ccc;
+  margin-bottom: 0.5rem;
+  font-style: italic;
+  font-weight: normal;
+}
+
+.memberPosition {
+  font-size: 0.9rem;
+  color: #bbb;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.memberBio {
+  background: rgba(0, 0, 0, 0.3);
+  padding: 1rem;
+  border-radius: 8px;
+  border-left: 3px solid white;
+}
+
+.memberBio p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #e0e0e0;
+  margin: 0;
+  text-align: left;
+}
+
+.disclaimer {
+  background: rgba(50, 50, 50, 0.3);
+  border: 1px solid #666;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-top: 3rem;
+  text-align: center;
+}
+
+.disclaimer p {
+  color: #ccc;
+  font-size: 0.9rem;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .bandContainer {
+    padding: 1rem;
+  }
+
+  .bandTitle {
+    font-size: 2.5rem;
+  }
+
+  .tagline {
+    font-size: 1.1rem;
+  }
+
+  .membersGrid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .memberCard {
+    padding: 1.5rem;
+  }
+
+  .memberImage {
+    width: 250px !important;
+    height: 250px !important;
+  }
+
+  .memberImagePlaceholder {
+    width: 250px;
+    height: 250px;
+  }
+
+  .manifesto {
+    padding: 1.5rem;
+  }
+
+  .manifesto h2 {
+    font-size: 1.5rem;
+  }
+
+  .manifesto p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .bandTitle {
+    font-size: 2rem;
+  }
+
+  .membersTitle {
+    font-size: 2rem;
+  }
+
+  .memberName {
+    font-size: 1.1rem;
+  }
+
+  .memberBio p {
+    font-size: 0.9rem;
+  }
 }

@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/router";
-import Page from "../../components/page";
 import styles from "../../styles/heist.module.css";
 
 type HeistPhase =
@@ -21,11 +20,8 @@ export default function TheHeist() {
   const [attempts, setAttempts] = useState(0);
   const [timeRemaining, setTimeRemaining] = useState(300); // 5 minutes
   const [alarmTriggered, setAlarmTriggered] = useState(false);
-  const [heistComplete, setHeistComplete] = useState(false);
-  const [showHints, setShowHints] = useState(false);
   const [dramaticReveal, setDramaticReveal] = useState(false);
 
-  const audioRef = useRef<HTMLAudioElement | null>(null);
   const timerRef = useRef<NodeJS.Timeout | null>(null);
 
   // The secret vault combination based on Wolfgang Wallace's Instagram debut
@@ -33,7 +29,15 @@ export default function TheHeist() {
   const VAULT_CODE = [0, 9, 0, 2];
 
   // Security codes based on band member names
-  const SECURITY_CODES = ["WA11Y", "J0E", "DARKSPECTER69", "AUST1N", "DRUMM3R"];
+  const SECURITY_CODES = [
+    "WA11Y",
+    "W411Y",
+    "J0E",
+    "J03",
+    "DARKSPECTER69",
+    "AUST1N",
+    "DRUMM3R",
+  ];
 
   useEffect(() => {
     // Start countdown timer when vault phase begins
@@ -56,13 +60,6 @@ export default function TheHeist() {
       }
     };
   }, [phase]);
-
-  useEffect(() => {
-    // Show hints after multiple failed attempts
-    if (attempts >= 3) {
-      setShowHints(true);
-    }
-  }, [attempts]);
 
   const formatTime = (seconds: number) => {
     const mins = Math.floor(seconds / 60);
@@ -110,7 +107,6 @@ export default function TheHeist() {
         setDramaticReveal(true);
         setTimeout(() => {
           setPhase("revealed");
-          setHeistComplete(true);
         }, 3000);
       }, 2000);
     } else {
@@ -188,8 +184,7 @@ export default function TheHeist() {
                     ENTER PERSONALIZED AUTHORIZATION CODE
                   </p>
                   <p className={styles.securityText}>
-                    (THIS WAS ASSIGNED DAY 1 AND IS UNIQUE TO YOU WHEN YOU
-                    JOINED WOLFGANG WALLACE)
+                    (THIS IS UNIQUE TO YOU AS A MEMBER OF WOLFGANG WALLACE)
                   </p>
                 </div>
               </div>
@@ -220,12 +215,6 @@ export default function TheHeist() {
                     FINAL WARNING - LOCKDOWN IMMINENT
                   </p>
                 )}
-              </div>
-            )}
-
-            {showHints && (
-              <div className={styles.hint}>
-                <p>💡 Try the name of someone who runs "the long con"...</p>
               </div>
             )}
           </div>
@@ -263,7 +252,7 @@ export default function TheHeist() {
               <div className={styles.vaultPlaque}>
                 "When did we first reveal ourselves?"
               </div>
-              
+
               <div className={styles.vaultWheel}>
                 <div className={styles.dialContainer}>
                   {vaultCombination.map((num, index) => (
@@ -274,7 +263,13 @@ export default function TheHeist() {
                       }`}
                     >
                       <div className={styles.dialNumber}>{num}</div>
-                      <div className={styles.dialTicks}>
+                      <div
+                        className={styles.dialTicks}
+                        style={{
+                          transform: `rotate(${-num * 36}deg)`,
+                          transition: "transform 0.3s ease-in-out",
+                        }}
+                      >
                         {[...Array(10)].map((_, i) => (
                           <div
                             key={i}
@@ -442,7 +437,6 @@ export default function TheHeist() {
                     setTimeRemaining(300);
                     setCurrentDialIndex(0);
                     setVaultCombination([0, 0, 0, 0]);
-                    setShowHints(false);
                   }}
                 >
                   TRY AGAIN
