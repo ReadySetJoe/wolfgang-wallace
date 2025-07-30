@@ -223,6 +223,7 @@ export default function Mystery() {
           spellCheck="false"
           style={{
             color: "black",
+            border: "1px solid white",
           }}
         />
         {secretKeyNdx === SECRET_KEYS.length && (
