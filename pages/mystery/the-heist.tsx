@@ -36,6 +36,7 @@ export default function TheHeist() {
     "J03",
     "DARKSPECTER69",
     "AUST1N",
+    "4UST1N",
     "DRUMM3R",
   ];
 
@@ -373,38 +374,38 @@ export default function TheHeist() {
                     <h2>THE DARK SPECTER'S TRUE IDENTITY</h2>
                     <div className={styles.documentContent}>
                       <p>CLASSIFIED DOSSIER #001</p>
-                      <p>SUBJECT: "THE DARK SPECTER"</p>
+                      <p>
+                        SUBJECT: <br />
+                        "THE DARK SPECTER"
+                      </p>
                       <hr />
-                      <p>REAL NAME: [REDACTED]</p>
-                      <p>OCCUPATION: Resident Artist</p>
-                      <p>KNOWN ALIASES: The Fifth Member</p>
-                      <p>STATUS: Still watching from the shadows...</p>
-                      <hr />
+                      <p>
+                        REAL NAME:
+                        <br /> [REDACTED]
+                      </p>
+                      <a
+                        href="https://youtu.be/8omIMPDNc5o"
+                        style={{ textDecoration: "underline" }}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        SUSPECTED ORIGIN VIDEO
+                      </a>
+                      <p>
+                        STATUS: <br />
+                        Still watching from the shadows...
+                      </p>
                       <p className={styles.finalMessage}>
-                        "Every good con needs someone behind the scenes.
+                        Every good con needs someone behind the scenes.
                         <br />
                         Every good band needs their mystery.
                         <br />
-                        Welcome to Wolfgang Wallace."
+                        Welcome to Wolfgang Wallace.
                       </p>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-            <div className={styles.finalButtons}>
-              <button
-                className={styles.returnButton}
-                onClick={() => router.push("/")}
-              >
-                RETURN TO THE SURFACE
-              </button>
-              <button
-                className={styles.mysteryButton}
-                onClick={() => router.push("/mystery")}
-              >
-                RETURN TO THE VOID
-              </button>
             </div>
           </div>
         </div>
