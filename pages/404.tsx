@@ -1,4 +1,4 @@
-import Page from "../components/page";
+import Page from "../components/Page";
 import { EyePlacements } from "../utils/eyePlacements";
 import styles from "../styles/404.module.css";
 

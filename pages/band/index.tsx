@@ -1,11 +1,11 @@
 import Image from "next/image";
-import Page from "../../components/page";
 import styles from "../../styles/band.module.css";
 import band from "../../images/band-art-landscape.jpeg";
 import dsImg from "../../images/dark-specter-image.jpg";
 import joeImg from "../../images/joe-image.jpeg";
 import wallyImg from "../../images/wally-image.jpeg";
 import { EyePlacements } from "../../utils/eyePlacements";
+import Page from "../../components/page";
 
 const MEMBER_BIOS = {
   wally: {

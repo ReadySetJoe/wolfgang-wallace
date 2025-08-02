@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
-import Page from "../../components/page";
 import { isHeistCompleted } from "../../utils/heistStatus";
 import {
   getCollectedEyes,
@@ -9,6 +8,7 @@ import {
 } from "../../utils/eyeCollection";
 import { EYE_DATA } from "../../utils/eyePlacements";
 import styles from "../../styles/ScavengerHunt.module.css";
+import Page from "../../components/page";
 
 export default function ScavengerHunt() {
   const router = useRouter();

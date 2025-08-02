@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useRouter } from "next/router";
-import Page from "../../components/page";
 import styles from "../../styles/mystery.module.css";
+import Page from "../../components/page";
 
 interface CipherMap {
   [key: string]: string;
