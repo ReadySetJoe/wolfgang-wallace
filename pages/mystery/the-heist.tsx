@@ -28,8 +28,8 @@ export default function TheHeist() {
   const timerRef = useRef<NodeJS.Timeout | null>(null);
 
   // The secret vault combination based on Wolfgang Wallace's Instagram debut
-  // September 2nd - the day we introduced ourselves to the world: 0902
-  const VAULT_CODE = [0, 9, 0, 2];
+  // September 2nd, 2018 - the day we introduced ourselves to the world: 9218
+  const VAULT_CODE = [9, 2, 1, 8];
 
   // Security codes based on band member names
   const SECURITY_CODES = [
@@ -38,9 +38,15 @@ export default function TheHeist() {
     "J0E",
     "J03",
     "DARKSPECTER69",
+    "D4RKSPECT3R",
+    "D4RKSPECTER",
+    "DARKSP3CT3R",
     "AUST1N",
     "4UST1N",
     "DRUMM3R",
+    "SH4NE",
+    "SHAN3",
+    "SH4N3",
   ];
 
   useEffect(() => {
@@ -198,7 +204,8 @@ export default function TheHeist() {
                     ENTER PERSONALIZED AUTHORIZATION CODE
                   </p>
                   <p className={styles.securityText}>
-                    (THIS IS UNIQUE TO YOU AS A MEMBER OF WOLFGANG WALLACE)
+                    (THIS ALPHANUMERIC CODE IS UNIQUE TO YOU AS A MEMBER OF
+                    WOLFGANG WALLACE)
                   </p>
                 </div>
               </div>
