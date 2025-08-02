@@ -5,7 +5,7 @@ import dsImg from "../../images/dark-specter-image.jpg";
 import joeImg from "../../images/joe-image.jpeg";
 import wallyImg from "../../images/wally-image.jpeg";
 import { EyePlacements } from "../../utils/eyePlacements";
-import Page from "../../components/page";
+import Page from "../../components/Page";
 
 const MEMBER_BIOS = {
   wally: {

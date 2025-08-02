@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { EyePlacements } from "../../utils/eyePlacements";
-import Page from "../../components/page";
+import Page from "../../components/Page";
 
 interface Message {
   role: "user" | "assistant";

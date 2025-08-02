@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import styles from "../../styles/mystery.module.css";
 import { EyePlacements } from "../../utils/eyePlacements";
-import Page from "../../components/page";
+import Page from "../../components/Page";
 
 const SECRET_KEYS = ["n", "o", "t", "h", "i", "n", "g"];
 

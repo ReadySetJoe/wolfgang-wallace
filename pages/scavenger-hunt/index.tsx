@@ -8,7 +8,8 @@ import {
 } from "../../utils/eyeCollection";
 import { EYE_DATA } from "../../utils/eyePlacements";
 import styles from "../../styles/ScavengerHunt.module.css";
-import Page from "../../components/page";
+import Page from "../../components/Page";
+import Link from "next/link";
 
 export default function ScavengerHunt() {
   const router = useRouter();
@@ -79,8 +80,15 @@ export default function ScavengerHunt() {
             to lift.
           </p>
           <p className={styles.reward}>
-            🎵 Reward: [Placeholder - Video introducing them to the hunt, +
-            demos?]
+            🎵 Reward:{" "}
+            <Link
+              href="https://soundcloud.com/joe-and-all-his-friends"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ textDecoration: "underline" }}
+            >
+              Joe's & All His Friends
+            </Link>
           </p>
         </div>
       );
@@ -92,8 +100,15 @@ export default function ScavengerHunt() {
           <h3>Awakening Vision (5 Eyes Found)</h3>
           <p>Your perception sharpens. The patterns become clearer.</p>
           <p className={styles.reward}>
-            🎨 Reward: [Placeholder - Congratulatory video + link to Joe Smo art
-            gallery]
+            🎨 Reward:{" "}
+            <Link
+              href="https://drive.google.com/drive/folders/1E9mcitRrQ5v6F4lVCJVRRrvuKKGCmH9M?usp=sharing"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ textDecoration: "underline" }}
+            >
+              Super Secret Demos
+            </Link>
           </p>
         </div>
       );
@@ -105,21 +120,74 @@ export default function ScavengerHunt() {
           <h3>Third Eye Open (10 Eyes Found)</h3>
           <p>Half the truth is revealed. The mysteries deepen.</p>
           <p className={styles.reward}>
-            🎬 Reward: [Placeholder - Video warning of the final eyes + Google
-            drive access to all of Wolfgang Finds the Perfect Tooth demos]
+            🎨 Reward: [Placeholder - link to Joe Smo art gallery]
           </p>
+          [Placeholder - Congratulatory video, halfway there]
+        </div>
+      );
+    }
+
+    if (collectedCount >= 15) {
+      tiers.push(
+        <div key="tier4" className={styles.tier}>
+          <h3>Penultimate Visage (15 Eyes Found)</h3>
+          <p>The final pieces fall into place. The full picture emerges.</p>
+          <p className={styles.reward}>
+            🦷 Reward:{" "}
+            <Link
+              href="https://drive.google.com/drive/folders/1osfMvOP9l3ZjXv_ZZIFeQelKjhb5S9Zc?usp=sharing"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ textDecoration: "underline" }}
+            >
+              Wolfgang Finds the Perfect Tooth Demos
+            </Link>
+          </p>
+          [Placeholder - Video warning of the final eyes]
         </div>
       );
     }
 
     if (collectedCount === 20) {
       tiers.push(
-        <div key="tier4" className={styles.tier}>
+        <div key="tier5" className={styles.tier}>
           <h3>All-Seeing (20 Eyes Found - COMPLETE)</h3>
           <p>You have found them all. The full truth is yours.</p>
-          <p className={styles.reward}>
-            🏆 Ultimate Reward: [Personalized message, and a code for a venmo
-            request for $20]
+          <div className={styles.reward}>
+            🏆 Ultimate Reward:
+            <div style={{ marginTop: "1rem", textAlign: "center" }}>
+              <video
+                style={{
+                  borderRadius: "8px",
+                  maxWidth: "100%",
+                  width: "80%",
+                  height: "auto",
+                  boxShadow: "0 4px 20px rgba(0, 0, 0, 0.5)",
+                }}
+                controls
+                preload="metadata"
+              >
+                <source
+                  src="/videos/dark-specter-holy-video.mp4"
+                  type="video/mp4"
+                />
+                Your browser does not support the video tag.
+              </video>
+            </div>
+          </div>
+          <p style={{ marginTop: "1rem" }}>
+            Congratulations, you made it to the end. I'm must say, I'm honestly
+            impressed. For your reward, please DM our{" "}
+            <Link
+              href="https://www.instagram.com/wolfgangwallaceband/"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ textDecoration: "underline" }}
+            >
+              instagram account
+            </Link>{" "}
+            with the message <b>THE BEACON IS LIT</b> to receive your final
+            reward.
           </p>
           <button
             className={styles.resetButton}
