@@ -3,6 +3,7 @@ import type { AppProps } from "next/app";
 import { EB_Garamond } from "@next/font/google";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
+import KonamiCode from "../components/KonamiCode";
 
 const ebGaramond = EB_Garamond({
   weight: "400",
@@ -20,6 +21,7 @@ export default function App({ Component, pageProps }: AppProps) {
     <main className={ebGaramond.className}>
       <ThemeProvider theme={darkTheme}>
         <CssBaseline />
+        <KonamiCode />
         <Component {...pageProps} />
       </ThemeProvider>
     </main>

@@ -1,18 +1,22 @@
-// pages/index.tsx
-
 import { useState } from "react";
+import { EyePlacements } from "../../utils/eyePlacements";
+import Page from "../../components/page";
 
 interface Message {
   role: "user" | "assistant";
-  content: string;
+  content: string | React.ReactNode;
 }
 
 const Home = () => {
   const [conversation, setConversation] = useState<Message[]>([
     {
       role: "assistant",
-      content:
-        "Welcome to the Wolfgang Wallace RPG. Describe who you are, and what it is you seek.",
+      content: (
+        <>
+          Welcome to the Wolfgang Wallace RPG. Describe who you are, and what it
+          is you seek. {EyePlacements.RpgCharacter()}
+        </>
+      ),
     },
   ]);
   const [inputValue, setInputValue] = useState<string>("");
@@ -31,6 +35,15 @@ const Home = () => {
     setInputValue("");
 
     try {
+      // Convert conversation history to plain text for API
+      const plainHistory = conversation.map((msg) => ({
+        role: msg.role,
+        content:
+          typeof msg.content === "string"
+            ? msg.content
+            : "Welcome to the Wolfgang Wallace RPG. Describe who you are, and what it is you seek.",
+      }));
+
       const apiResponse = await fetch("/api/chat", {
         method: "POST",
         headers: {
@@ -38,7 +51,7 @@ const Home = () => {
         },
         body: JSON.stringify({
           question: inputValue,
-          history: conversation,
+          history: plainHistory,
         }),
       });
 
@@ -66,69 +79,85 @@ const Home = () => {
   };
 
   return (
-    <div style={{ maxWidth: "600px", margin: "0 auto", padding: "20px" }}>
+    <Page>
       <div
         style={{
-          height: "400px",
-          overflowY: "auto",
-          border: "1px solid #ccc",
-          padding: "10px",
-          marginBottom: "20px",
+          maxWidth: "600px",
+          margin: "0 auto",
+          padding: "20px",
+          position: "relative",
         }}
       >
-        {conversation.map((message, index) => (
-          <div
-            key={index}
-            style={{
-              marginBottom: "10px",
-              textAlign: message.role === "user" ? "right" : "left",
-            }}
-          >
-            <span
+        <div
+          style={{
+            height: "400px",
+            overflowY: "auto",
+            border: "1px solid #ccc",
+            padding: "10px",
+            marginBottom: "20px",
+          }}
+        >
+          {conversation.map((message, index) => (
+            <div
+              key={index}
               style={{
-                display: "inline-block",
-                padding: "8px",
-                borderRadius: "8px",
-                backgroundColor: message.role !== "user" ? "black" : "#f1f1f1",
-                color: message.role !== "user" ? "white" : "black",
+                marginBottom: "10px",
+                textAlign: message.role === "user" ? "right" : "left",
               }}
             >
-              {message.content}
-            </span>
-          </div>
-        ))}
+              <span
+                style={{
+                  display: "inline-block",
+                  padding: "8px",
+                  borderRadius: "8px",
+                  backgroundColor:
+                    message.role !== "user" ? "black" : "#f1f1f1",
+                  color: message.role !== "user" ? "white" : "black",
+                }}
+              >
+                {message.content}
+                {message.role === "user" && index === 1 && (
+                  <div>{EyePlacements.RpgQuest()}</div>
+                )}
+              </span>
+            </div>
+          ))}
+        </div>
+        <div style={{ display: "flex" }}>
+          <input
+            type="text"
+            value={inputValue}
+            onChange={handleInputChange}
+            style={{
+              flexGrow: 1,
+              marginRight: "10px",
+              padding: "8px",
+              border: "1px solid #ccc",
+              borderRadius: "4px",
+            }}
+            placeholder="Say something..."
+            disabled={isLoading}
+          />
+          <button
+            onClick={handleSubmit}
+            style={{
+              padding: "8px 16px",
+              backgroundColor: "black",
+              color: "white",
+              border: "none",
+              borderRadius: "4px",
+              cursor: "pointer",
+            }}
+            disabled={isLoading}
+          >
+            {isLoading ? "Sending..." : "Speak"}
+          </button>
+        </div>
+        <div style={{ marginTop: "30px", textAlign: "center" }}>
+          {EyePlacements.RpgSecret()}
+        </div>
       </div>
-      <div style={{ display: "flex" }}>
-        <input
-          type="text"
-          value={inputValue}
-          onChange={handleInputChange}
-          style={{
-            flexGrow: 1,
-            marginRight: "10px",
-            padding: "8px",
-            border: "1px solid #ccc",
-            borderRadius: "4px",
-          }}
-          placeholder="Say something..."
-          disabled={isLoading}
-        />
-        <button
-          onClick={handleSubmit}
-          style={{
-            padding: "8px 16px",
-            backgroundColor: "black",
-            color: "white",
-            border: "none",
-            borderRadius: "4px",
-            cursor: "pointer",
-          }}
-          disabled={isLoading}
-        >
-          {isLoading ? "Sending..." : "Speak"}
-        </button>
-      </div>
-    </div>
+    </Page>
   );
 };
 

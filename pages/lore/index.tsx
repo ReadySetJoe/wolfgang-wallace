@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Page from "../../components/page";
 import styles from "../../styles/lore.module.css";
+import { EyePlacements } from "../../utils/eyePlacements";
 
 interface Song {
   title: string;
@@ -60,13 +61,25 @@ export default function Lore() {
             <div className={styles.paperTexture}></div>
             <div className={styles.paperGradient}></div>
             <div className={styles.paperContent}>
-              <h3>Act I: J. Powers - The Fall from Grace</h3>
+              <h3>Act I: J. Powers</h3>
               <p>
                 Our tale begins with J. Powers, a man consumed by his own mind (
-                <em>Napoleon</em>). Lost in fantasies of grandeur and
-                immortality, he escapes into delusions where he is revered as a
-                god. But beneath the facade lies a broken soul - a narcissist, a
-                liar, desperate to blame his failings on anything but himself.
+                <em style={{ position: "relative" }}>
+                  <div
+                    style={{
+                      position: "absolute",
+                      top: "-20px",
+                      left: "25px",
+                    }}
+                  >
+                    {EyePlacements.LoreChapter1()}
+                  </div>
+                  Napoleon
+                </em>
+                ). Lost in fantasies of grandeur and immortality, he escapes
+                into delusions where he is revered as a god. But beneath the
+                facade lies a broken soul - a narcissist, a liar, desperate to
+                blame his failings on anything but himself.
               </p>
 
               <p>
@@ -90,7 +103,10 @@ export default function Lore() {
                 earthly problems.
               </p>
 
-              <h3>Act II: Wolfgang Wallace - The Crash</h3>
+              <h3>
+                Act II: Wolfgang Wallace
+                {EyePlacements.LoreChapter2()}
+              </h3>
               <p>
                 Enter Wolfgang Wallace, a skilled pilot whose fate becomes
                 tragically intertwined with Powers' crimes. Flying a Lockheed
@@ -111,7 +127,7 @@ export default function Lore() {
                 find the man responsible for his suffering.
               </p>
 
-              <h3>Act III: The Hunt and the Sacrifice</h3>
+              <h3>Act III: The Dance Macabre</h3>
               <p>
                 Wolfgang's investigation leads him to the harbor (
                 <em>Harbor</em>), where in his rage and desperation, he
@@ -130,13 +146,17 @@ export default function Lore() {
                 Specter. Neither alive nor dead, they exist in the void between
                 worlds, forever bound by the consequences of greed, revenge, and
                 forbidden love.
+                <br />
+                <span style={{ opacity: 0.5, marginLeft: "5px" }}>
+                  {EyePlacements.LoreSecret()}
+                </span>
               </p>
 
               <p className={styles.epilogue}>
                 <em>
                   "Was it worth it?" she asked.
                   <br />
-                  "For you, of course it is."
+                  "For you, of course it is." {EyePlacements.LoreEnd()}
                 </em>
               </p>
             </div>

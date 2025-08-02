@@ -5,6 +5,7 @@ import band from "../../images/band-art-landscape.jpeg";
 import dsImg from "../../images/dark-specter-image.jpg";
 import joeImg from "../../images/joe-image.jpeg";
 import wallyImg from "../../images/wally-image.jpeg";
+import { EyePlacements } from "../../utils/eyePlacements";
 
 const MEMBER_BIOS = {
   wally: {
@@ -86,15 +87,42 @@ export default function Band() {
         <div className={styles.membersGrid}>
           {Object.entries(MEMBER_BIOS).map(([key, member]) => (
             <div key={key} className={styles.memberCard}>
-              <div className={styles.memberImageContainer}>
+              <div
+                className={styles.memberImageContainer}
+                style={{ position: "relative" }}
+              >
                 {member.image ? (
-                  <Image
-                    src={member.image}
-                    alt={member.name}
-                    className={styles.memberImage}
-                    width={400}
-                    height={400}
-                  />
+                  <>
+                    <Image
+                      src={member.image}
+                      alt={member.name}
+                      className={styles.memberImage}
+                      width={400}
+                      height={400}
+                    />
+                    {key === "wally" && (
+                      <div
+                        style={{
+                          position: "absolute",
+                          bottom: "12px",
+                          right: "140px",
+                        }}
+                      >
+                        {EyePlacements.BandMember1()}
+                      </div>
+                    )}
+                    {key === "joe" && (
+                      <div
+                        style={{
+                          position: "absolute",
+                          top: "50px",
+                          right: "50px",
+                        }}
+                      >
+                        {EyePlacements.BandMember2()}
+                      </div>
+                    )}
+                  </>
                 ) : (
                   <div className={styles.memberImagePlaceholder}>
                     <div className={styles.placeholderText}>
@@ -110,6 +138,18 @@ export default function Band() {
                 <h3 className={styles.memberName}>{member.name}</h3>
                 <p className={styles.memberPosition}>{member.position}</p>
                 <div className={styles.memberBio}>
+                  {key === "austin" && (
+                    <div
+                      style={{
+                        opacity: 0.2,
+                        position: "absolute",
+                        bottom: "10px",
+                        right: "10px",
+                      }}
+                    >
+                      {EyePlacements.BandMember3()}
+                    </div>
+                  )}
                   <p>{member.bio}</p>
                 </div>
               </div>
@@ -123,6 +163,9 @@ export default function Band() {
             living or dead, is purely coincidental. The band members depicted
             are fictional characters created for artistic purposes. No actual
             aircraft were harmed in the making of this mythology.
+            <span style={{ marginLeft: "10px", opacity: 0.3 }}>
+              {EyePlacements.BandBio()}
+            </span>
           </p>
         </div>
       </div>

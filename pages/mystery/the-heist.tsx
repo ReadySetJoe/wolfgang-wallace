@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import Image from "next/image";
 import styles from "../../styles/heist.module.css";
 import logoImg from "../../images/ww-logo.png";
+import Link from "next/link";
 
 type HeistPhase =
   | "arrival"
@@ -114,7 +115,7 @@ export default function TheHeist() {
           const expirationDate = new Date();
           expirationDate.setFullYear(expirationDate.getFullYear() + 1);
           document.cookie = `heist_completed=true; expires=${expirationDate.toUTCString()}; path=/; SameSite=Strict`;
-          
+
           // Also store completion timestamp
           const completionTime = new Date().toISOString();
           document.cookie = `heist_completion_time=${completionTime}; expires=${expirationDate.toUTCString()}; path=/; SameSite=Strict`;
@@ -422,12 +423,6 @@ export default function TheHeist() {
                       </p>
                       <div className={styles.rewardSection}>
                         <h3>🏆 HEIST MASTER REWARDS UNLOCKED 🏆</h3>
-                        <ul className={styles.rewardsList}>
-                          <li>✓ Secret Band Member Access</li>
-                          <li>✓ Hidden Song Previews</li>
-                          <li>✓ Exclusive Content Portal</li>
-                          <li>✓ The Dark Spectre's Archive</li>
-                        </ul>
                         <p className={styles.rewardNote}>
                           Your browser remembers your achievement.
                           <br />
@@ -439,6 +434,13 @@ export default function TheHeist() {
                 </div>
               </div>
             </div>
+            <Link
+              href="/scavenger-hunt"
+              className={`${styles.fadeInSlow}`}
+              style={{ fontSize: "1.2em", marginTop: "20px" }}
+            >
+              CONTINUE THE SEARCH FOR TRUTH
+            </Link>
           </div>
         </div>
       </div>

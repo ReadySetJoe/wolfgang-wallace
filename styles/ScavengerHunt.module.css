@@ -1,0 +1,172 @@
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.title {
+  text-align: center;
+  font-size: 3rem;
+  margin-bottom: 2rem;
+  color: #fff;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+}
+
+.progress {
+  margin-bottom: 2rem;
+}
+
+.count {
+  text-align: center;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.progressBar {
+  width: 100%;
+  height: 30px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.progressFill {
+  height: 100%;
+  background: linear-gradient(90deg, #4a148c, #7b1fa2);
+  transition: width 0.5s ease;
+  box-shadow: 0 0 10px rgba(123, 31, 162, 0.5);
+}
+
+.nextTierInfo {
+  text-align: center;
+  margin-top: 1rem;
+  font-size: 1.1rem;
+  color: #b388ff;
+}
+
+.nextTierInfo strong {
+  color: #fff;
+  text-shadow: 0 0 10px rgba(179, 136, 255, 0.5);
+}
+
+.eyes {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 3rem;
+}
+
+.eye {
+  font-size: 1.5rem;
+  opacity: 0.3;
+  filter: grayscale(1);
+  transition: all 0.3s ease;
+}
+
+.eye.collected {
+  opacity: 1;
+  filter: grayscale(0) drop-shadow(0 0 5px rgba(255, 255, 255, 0.5));
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+.content {
+  margin-bottom: 2rem;
+}
+
+.tier {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  padding: 2rem;
+  margin-bottom: 1.5rem;
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.tier h2, .tier h3 {
+  color: #b388ff;
+  margin-bottom: 1rem;
+}
+
+.reward {
+  font-style: italic;
+  color: #81c784;
+  margin-top: 1rem;
+  padding: 1rem;
+  background: rgba(129, 199, 132, 0.1);
+  border-left: 3px solid #81c784;
+}
+
+.hint {
+  text-align: center;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.7);
+  margin-top: 2rem;
+}
+
+.resetButton {
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  background: rgba(255, 0, 0, 0.2);
+  border: 1px solid rgba(255, 0, 0, 0.5);
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.resetButton:hover {
+  background: rgba(255, 0, 0, 0.3);
+  border-color: rgba(255, 0, 0, 0.7);
+}
+
+.nextHint {
+  margin-top: 3rem;
+  padding: 2rem;
+  background: linear-gradient(135deg, rgba(123, 31, 162, 0.1), rgba(74, 20, 140, 0.1));
+  border: 2px solid rgba(123, 31, 162, 0.3);
+  border-radius: 15px;
+  text-align: center;
+  animation: glow 3s ease-in-out infinite;
+}
+
+@keyframes glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(123, 31, 162, 0.3); }
+  50% { box-shadow: 0 0 30px rgba(123, 31, 162, 0.5); }
+}
+
+.nextHint h3 {
+  color: #b388ff;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.hintText {
+  font-size: 1.2rem;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.hintIcon {
+  font-size: 1.5rem;
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}

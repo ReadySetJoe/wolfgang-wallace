@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import Page from "../../components/page";
 import styles from "../../styles/mystery.module.css";
+import { EyePlacements } from "../../utils/eyePlacements";
 
 const SECRET_KEYS = ["n", "o", "t", "h", "i", "n", "g"];
 
@@ -83,7 +84,7 @@ export default function Mystery() {
     }
 
     // Also check if they've typed the complete word
-    if (value === "nothing") {
+    if (value.includes("nothing")) {
       setSecretKeyNdx(SECRET_KEYS.length);
     }
   };
@@ -192,6 +193,9 @@ export default function Mystery() {
             {voidClicks === 4 && "One more..."}
           </div>
         )}
+        <div style={{ position: "absolute", top: "20px", right: "20px" }}>
+          {EyePlacements.MysteryClue()}
+        </div>
       </div>
     );
   }
@@ -200,7 +204,9 @@ export default function Mystery() {
     return (
       <Page>
         <div className={styles.revealedContainer}>
-          <h1 className={styles.fadeIn}>Act I - The Long Con</h1>
+          <h1 className={styles.fadeIn}>
+            Act I - The Long Con {EyePlacements.MysteryReveal()}
+          </h1>
           <p className={`${styles.typewriter} ${styles.fadeInDelayed}`}>
             You've found The Dark Specter's eye. But this is just the beginning.
           </p>
@@ -214,6 +220,10 @@ export default function Mystery() {
               For the path to a new page, take a quick slash,
               <br />
               Then add your two names, conjoined with a dash."
+              <br />
+              <span style={{ marginLeft: "10px" }}>
+                {EyePlacements.MysteryPuzzle()}
+              </span>
             </blockquote>
           </div>
         </div>
@@ -224,7 +234,9 @@ export default function Mystery() {
   return (
     <Page>
       <div className={styles.initialContainer}>
-        <p className={styles.fadeIn}>What is in the box below?</p>
+        <p className={styles.fadeIn}>
+          What is in the box below? {EyePlacements.MysteryIntro()}
+        </p>
         <input
           value={inputValue}
           onChange={handleInputChange}

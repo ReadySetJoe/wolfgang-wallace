@@ -199,6 +199,7 @@
 }
 
 .memberBio {
+  position: relative;
   background: rgba(0, 0, 0, 0.3);
   padding: 1rem;
   border-radius: 8px;

@@ -21,7 +21,7 @@ export default function BonnieClyde() {
     "🌙": "N",
     "🎭": "A",
     "🗡️": "L",
-    "👁️": "S",
+    "💰": "S",
     "⭕": "T",
     "🦇": "E",
   };
@@ -38,7 +38,7 @@ export default function BonnieClyde() {
     return initial;
   });
 
-  const cipherPhrase = "💀🕯️ 🔮🎵🌙🎭🗡️ 👁️⭕🎭⭕🦇💀🦇🌙⭕";
+  const cipherPhrase = "💀🕯️ 🔮🎵🌙🎭🗡️ 💰⭕🎭⭕🦇💀🦇🌙⭕";
 
   // Helper function to properly segment Unicode graphemes (including emojis with variant selectors)
   const segmentGraphemes = (str: string) => {
