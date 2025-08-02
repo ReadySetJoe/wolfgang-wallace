@@ -5,6 +5,7 @@ An immersive Next.js website for the band Wolfgang Wallace, featuring storytelli
 ## 🎵 Features
 
 ### Core Website
+
 - **Band Information**: Detailed member profiles with dark fictional backstories
 - **Lore Pages**: Multi-act narrative telling the Wolfgang Wallace story
 - **Mystery Section**: Interactive puzzles and ciphers to solve
@@ -14,20 +15,25 @@ An immersive Next.js website for the band Wolfgang Wallace, featuring storytelli
 ### Interactive Systems
 
 #### 🕵️ Mystery Progression
+
 Complete a multi-stage mystery that unlocks special features:
+
 1. **Initial Puzzle**: Decode the "nothing" cipher
-2. **The Void**: Find hidden clickable areas 
+2. **The Void**: Find hidden clickable areas
 3. **Bonnie-Clyde Cipher**: Solve the bankruptcy message
 4. **The Heist**: Final challenge that unlocks all secret features
 
 #### 👁️ Eye Hunt Scavenger System
+
 After completing the heist, players gain access to:
+
 - **20 Hidden Eyes** scattered across the site
 - **Tiered Reward System** (1, 5, 10, 20 eyes unlock different content)
 - **Progress Tracking** with hints for next unfound eyes
 - **Cookie Persistence** to save collection progress
 
 #### 🎮 Secret Features
+
 - **Konami Code**: Enter ↑↑↓↓←→←→BA to invert all images and reveal a special collectible eye
 - **Hidden Navigation**: Secret "👁️ HUNT" tab appears for heist completers
 - **404 Easter Eggs**: Special content on error pages
@@ -45,30 +51,35 @@ After completing the heist, players gain access to:
 ## 🚀 Getting Started
 
 ### Prerequisites
-- Node.js 16+ 
+
+- Node.js 16+
 - npm or yarn
 - OpenAI API key (for RPG functionality)
 
 ### Installation
 
 1. Clone the repository:
+
 ```bash
 git clone [repository-url]
 cd wolfgang-wallace
 ```
 
 2. Install dependencies:
+
 ```bash
 npm install
 ```
 
 3. Set up environment variables:
+
 ```bash
 # Create .env.local file
 OPENAI_API_KEY=your_openai_api_key_here
 ```
 
 4. Run the development server:
+
 ```bash
 npm run dev
 ```
@@ -76,6 +87,7 @@ npm run dev
 5. Open [http://localhost:3000](http://localhost:3000) in your browser
 
 ### Development Commands
+
 ```bash
 npm run dev    # Start development server
 npm run build  # Build for production
@@ -88,7 +100,7 @@ npm run lint   # Run Next.js linting
 ```
 pages/
 ├── band/           # Band member information
-├── lore/           # Story/narrative content  
+├── lore/           # Story/narrative content
 ├── mystery/        # Mystery puzzles and progression
 │   ├── bonnie-clyde.tsx    # Cipher puzzle
 │   └── the-heist.tsx       # Final challenge
@@ -117,18 +129,21 @@ styles/
 ## 🎯 Key Features Explained
 
 ### Eye Collection System
+
 - Uses `js-cookie` for persistent storage
 - 20 unique eyes with individual hints
 - Progressive revelation system
 - Supports reset functionality
 
 ### Mystery Progression
+
 - Multi-stage puzzle system
 - State persistence across sessions
 - Unlocks advanced site features
 - Cryptographic elements and ciphers
 
 ### Accessibility
+
 - Keyboard navigation support
 - Screen reader friendly
 - High contrast dark theme

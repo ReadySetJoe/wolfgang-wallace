@@ -134,8 +134,12 @@
 }
 
 @keyframes subtleGlow {
-  0% { border-color: #d4af37; }
-  100% { border-color: #f4d03f; }
+  0% {
+    border-color: #d4af37;
+  }
+  100% {
+    border-color: #f4d03f;
+  }
 }
 
 .lyricsSection {
@@ -171,7 +175,7 @@
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.3s ease;
-  font-family: 'EB Garamond', serif;
+  font-family: "EB Garamond", serif;
   font-size: 1rem;
   text-align: left;
 }
@@ -211,7 +215,7 @@
 .lyricsText {
   line-height: 1.8;
   color: #e0e0e0;
-  font-family: 'EB Garamond', serif;
+  font-family: "EB Garamond", serif;
   white-space: pre-line;
   max-height: 500px;
   overflow-y: auto;
@@ -242,8 +246,14 @@
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .paperContent h2 {
@@ -251,7 +261,7 @@
   color: #8b4513;
   text-align: center;
   margin-bottom: 2rem;
-  font-family: 'EB Garamond', serif;
+  font-family: "EB Garamond", serif;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
 }
 
@@ -260,7 +270,7 @@
   color: #654321;
   margin-top: 2rem;
   margin-bottom: 1rem;
-  font-family: 'EB Garamond', serif;
+  font-family: "EB Garamond", serif;
 }
 
 .paperContent p {
@@ -269,7 +279,7 @@
   color: #3a3a3a;
   margin-bottom: 1rem;
   text-align: justify;
-  font-family: 'EB Garamond', serif;
+  font-family: "EB Garamond", serif;
 }
 
 .paperContent em {
@@ -291,23 +301,23 @@
   .songGrid {
     grid-template-columns: 1fr;
   }
-  
+
   .lyricsDisplay {
     padding: 1.5rem;
   }
-  
+
   .wipNotice {
     padding: 1rem;
   }
-  
+
   .paperContent h2 {
     font-size: 1.5rem;
   }
-  
+
   .paperContent h3 {
     font-size: 1.2rem;
   }
-  
+
   .paperContent p {
     font-size: 1rem;
   }

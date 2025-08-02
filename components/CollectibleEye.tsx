@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { isHeistCompleted } from '../utils/heistStatus';
-import { collectEye, hasCollectedEye } from '../utils/eyeCollection';
-import styles from '../styles/CollectibleEye.module.css';
+import React, { useState, useEffect } from "react";
+import { isHeistCompleted } from "../utils/heistStatus";
+import { collectEye, hasCollectedEye } from "../utils/eyeCollection";
+import styles from "../styles/CollectibleEye.module.css";
 
 interface CollectibleEyeProps {
   eyeId: string;
@@ -9,7 +9,11 @@ interface CollectibleEyeProps {
   hidden?: boolean;
 }
 
-export default function CollectibleEye({ eyeId, hint = "A secret awaits...", hidden = false }: CollectibleEyeProps) {
+export default function CollectibleEye({
+  eyeId,
+  hint = "A secret awaits...",
+  hidden = false,
+}: CollectibleEyeProps) {
   const [isUnlocked, setIsUnlocked] = useState(false);
   const [isCollected, setIsCollected] = useState(false);
   const [showAnimation, setShowAnimation] = useState(false);
@@ -32,8 +36,10 @@ export default function CollectibleEye({ eyeId, hint = "A secret awaits...", hid
   };
 
   return (
-    <span 
-      className={`${styles.collectibleEye} ${hidden ? styles.hidden : ''} ${showAnimation ? styles.collecting : ''}`}
+    <span
+      className={`${styles.collectibleEye} ${hidden ? styles.hidden : ""} ${
+        showAnimation ? styles.collecting : ""
+      }`}
       onClick={handleClick}
       title={hint}
     >

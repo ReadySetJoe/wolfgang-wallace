@@ -5,6 +5,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Commands
 
 ### Development
+
 ```bash
 npm run dev    # Start development server on http://localhost:3000
 npm run build  # Build for production
@@ -13,6 +14,7 @@ npm run lint   # Run Next.js linting
 ```
 
 ### Installation
+
 ```bash
 npm install    # Install dependencies
 ```
@@ -22,6 +24,7 @@ npm install    # Install dependencies
 This is a Next.js 13 website for the band Wolfgang Wallace, built with TypeScript and React 18. The site combines band information, storytelling elements, interactive mysteries, and an advanced collectible system.
 
 ### Tech Stack
+
 - **Framework**: Next.js 13.0.4 with TypeScript
 - **UI**: Material-UI (MUI) v5 with dark theme
 - **Styling**: CSS Modules + styled-components + MUI theming
@@ -31,6 +34,7 @@ This is a Next.js 13 website for the band Wolfgang Wallace, built with TypeScrip
 - **AI Integration**: OpenAI SDK for RPG chat functionality
 
 ### Key Directories
+
 - `pages/` - Next.js file-based routing
   - `band/` - Band member information with collectible eyes
   - `lore/` - Story/narrative content with hidden collectibles
@@ -61,7 +65,9 @@ This is a Next.js 13 website for the band Wolfgang Wallace, built with TypeScrip
 ### Interactive Systems
 
 #### Mystery Progression System
+
 The site features a multi-stage mystery that unlocks advanced features:
+
 1. **Initial Phase**: Solve "nothing" cipher on `/mystery`
 2. **Void Phase**: Find hidden clickable areas in the darkness
 3. **Cipher Phase**: Solve the Bonnie-Clyde bankruptcy cipher
@@ -70,7 +76,9 @@ The site features a multi-stage mystery that unlocks advanced features:
 Completion state is tracked in `utils/heistStatus.ts` using localStorage.
 
 #### Eye Hunt Scavenger System
+
 After completing the heist, users gain access to a comprehensive collectible system:
+
 - **20 Hidden Eyes** strategically placed across all pages
 - **Tiered Rewards**: 1, 5, 10, and 20 eye milestones unlock different content
 - **Smart Hints**: Progress page shows hints for the next unfound eye
@@ -78,7 +86,9 @@ After completing the heist, users gain access to a comprehensive collectible sys
 - **Interactive Elements**: Eyes have hover effects, collection animations, and opacity variations
 
 #### Konami Code Easter Egg
+
 Enter ↑↑↓↓←→←→BA to activate:
+
 - Image inversion effect site-wide using CSS filters
 - Special collectible eye appears in screen center
 - Pulsing indicator in bottom-right corner
@@ -98,6 +108,7 @@ Enter ↑↑↓↓←→←→BA to activate:
 ### Eye Placement Guidelines
 
 When adding new collectible eyes:
+
 1. Use `EyePlacements` from `utils/eyePlacements.tsx`
 2. Assign unique `eyeId` and descriptive `hint` text
 3. Consider using `hidden` prop for more challenging finds
@@ -113,6 +124,7 @@ When adding new collectible eyes:
 - No user authentication or database requirements
 
 ### Development Notes
+
 - No testing framework is currently configured
 - ESLint uses Next.js defaults (no custom configuration)
 - The project features complex interactive state management

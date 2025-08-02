@@ -1,6 +1,6 @@
-import Page from '../components/page';
-import { EyePlacements } from '../utils/eyePlacements';
-import styles from '../styles/404.module.css';
+import Page from "../components/page";
+import { EyePlacements } from "../utils/eyePlacements";
+import styles from "../styles/404.module.css";
 
 export default function Custom404() {
   return (
@@ -11,7 +11,8 @@ export default function Custom404() {
           The page you seek has vanished into the darkness...
         </p>
         <p className={styles.hint}>
-          But those who see beyond the veil might find something here {EyePlacements.Error404()}
+          But those who see beyond the veil might find something here{" "}
+          {EyePlacements.Error404()}
         </p>
       </div>
     </Page>

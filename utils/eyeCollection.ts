@@ -1,6 +1,6 @@
-import Cookies from 'js-cookie';
+import Cookies from "js-cookie";
 
-const COOKIE_NAME = 'collected_eyes';
+const COOKIE_NAME = "collected_eyes";
 const COOKIE_EXPIRY = 365; // days
 
 export interface CollectedEye {
@@ -11,7 +11,7 @@ export interface CollectedEye {
 export function getCollectedEyes(): CollectedEye[] {
   const cookieValue = Cookies.get(COOKIE_NAME);
   if (!cookieValue) return [];
-  
+
   try {
     return JSON.parse(cookieValue);
   } catch {
@@ -21,21 +21,23 @@ export function getCollectedEyes(): CollectedEye[] {
 
 export function collectEye(eyeId: string): boolean {
   const collected = getCollectedEyes();
-  
+
   // Check if already collected
-  if (collected.some(eye => eye.id === eyeId)) {
+  if (collected.some((eye) => eye.id === eyeId)) {
     return false;
   }
-  
+
   // Add new eye
   const newEye: CollectedEye = {
     id: eyeId,
-    collectedAt: new Date().toISOString()
+    collectedAt: new Date().toISOString(),
   };
-  
+
   collected.push(newEye);
-  Cookies.set(COOKIE_NAME, JSON.stringify(collected), { expires: COOKIE_EXPIRY });
-  
+  Cookies.set(COOKIE_NAME, JSON.stringify(collected), {
+    expires: COOKIE_EXPIRY,
+  });
+
   return true;
 }
 
@@ -44,7 +46,7 @@ export function getCollectionCount(): number {
 }
 
 export function hasCollectedEye(eyeId: string): boolean {
-  return getCollectedEyes().some(eye => eye.id === eyeId);
+  return getCollectedEyes().some((eye) => eye.id === eyeId);
 }
 
 export function resetCollection(): void {

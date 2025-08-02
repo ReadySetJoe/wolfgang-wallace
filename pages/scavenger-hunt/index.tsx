@@ -4,7 +4,6 @@ import Page from "../../components/page";
 import { isHeistCompleted } from "../../utils/heistStatus";
 import {
   getCollectedEyes,
-  getCollectionCount,
   resetCollection,
   hasCollectedEye,
 } from "../../utils/eyeCollection";
@@ -15,7 +14,6 @@ export default function ScavengerHunt() {
   const router = useRouter();
   const [isUnlocked, setIsUnlocked] = useState(false);
   const [collectedCount, setCollectedCount] = useState(0);
-  const [collectedEyes, setCollectedEyes] = useState<any[]>([]);
 
   useEffect(() => {
     const unlocked = isHeistCompleted();
@@ -27,7 +25,6 @@ export default function ScavengerHunt() {
     }
 
     const eyes = getCollectedEyes();
-    setCollectedEyes(eyes);
     setCollectedCount(eyes.length);
   }, [router]);
 

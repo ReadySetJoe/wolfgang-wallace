@@ -90,22 +90,24 @@ export default function KonamiCode() {
 
   return (
     <>
-      {showKonamiEye && typeof document !== 'undefined' && ReactDOM.createPortal(
-        <div
-          style={{
-            position: 'fixed',
-            top: '50%',
-            left: '50%',
-            transform: 'translate(-50%, -50%)',
-            zIndex: 10000,
-            fontSize: '50px',
-            animation: 'fadeIn 2s',
-          }}
-        >
-          {EyePlacements.KonamiReward()}
-        </div>,
-        document.body
-      )}
+      {showKonamiEye &&
+        typeof document !== "undefined" &&
+        ReactDOM.createPortal(
+          <div
+            style={{
+              position: "fixed",
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+              zIndex: 10000,
+              fontSize: "50px",
+              animation: "fadeIn 2s",
+            }}
+          >
+            {EyePlacements.KonamiReward()}
+          </div>,
+          document.body
+        )}
     </>
   );
 }
