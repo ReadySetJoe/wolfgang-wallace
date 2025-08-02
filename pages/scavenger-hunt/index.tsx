@@ -8,7 +8,7 @@ import {
 } from "../../utils/eyeCollection";
 import { EYE_DATA } from "../../utils/eyePlacements";
 import styles from "../../styles/ScavengerHunt.module.css";
-import Page from "../../components/Page";
+import Page from "../../components/page";
 import Link from "next/link";
 
 export default function ScavengerHunt() {

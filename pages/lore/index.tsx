@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styles from "../../styles/lore.module.css";
 import { EyePlacements } from "../../utils/eyePlacements";
-import Page from "../../components/Page";
+import Page from "../../components/page";
 
 interface Song {
   title: string;
