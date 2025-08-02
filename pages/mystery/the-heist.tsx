@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/router";
+import Image from "next/image";
 import styles from "../../styles/heist.module.css";
+import logoImg from "../../images/ww-logo.png";
 
 type HeistPhase =
   | "arrival"
@@ -108,6 +110,14 @@ export default function TheHeist() {
         setDramaticReveal(true);
         setTimeout(() => {
           setPhase("revealed");
+          // Set completion cookie with 1 year expiration
+          const expirationDate = new Date();
+          expirationDate.setFullYear(expirationDate.getFullYear() + 1);
+          document.cookie = `heist_completed=true; expires=${expirationDate.toUTCString()}; path=/; SameSite=Strict`;
+          
+          // Also store completion timestamp
+          const completionTime = new Date().toISOString();
+          document.cookie = `heist_completion_time=${completionTime}; expires=${expirationDate.toUTCString()}; path=/; SameSite=Strict`;
         }, 3000);
       }, 2000);
     } else {
@@ -152,15 +162,17 @@ export default function TheHeist() {
           </div>
 
           <div className={styles.narrative}>
-            <h1 className={styles.heistTitle}>THE HEIST</h1>
-            <div className={styles.typewriter}>
+            <h1 className={`${styles.heistTitle} ${styles.fadeIn}`}>
+              THE HEIST
+            </h1>
+            <div className={`${styles.typewriter} ${styles.fadeInDelayed}`}>
               <p>The bank stands before you...</p>
               <p>The Dark Specter's final con begins now.</p>
               <p>You have one chance. Make it count.</p>
             </div>
 
             <button
-              className={styles.enterButton}
+              className={`${styles.enterButton} ${styles.fadeInSlow}`}
               onClick={() => setPhase("security")}
             >
               ENTER THE BANK
@@ -175,7 +187,7 @@ export default function TheHeist() {
     return (
       <div className={styles.heistContainer}>
         <div className={styles.securityRoom}>
-          <div className={styles.securityPanel}>
+          <div className={`${styles.securityPanel} ${styles.fadeIn}`}>
             <div className={styles.screenGlow}>
               <div className={styles.securityScreen}>
                 <div className={styles.scanLines}></div>
@@ -360,11 +372,13 @@ export default function TheHeist() {
       <div className={`${styles.heistContainer} ${styles.revealed}`}>
         <div className={styles.revealScene}>
           <div className={styles.completion}>
-            <h1 className={styles.completionTitle}>HEIST COMPLETE</h1>
-            <p className={styles.completionText}>
-              You've uncovered the truth behind the long con.
+            <h1 className={`${styles.completionTitle} ${styles.fadeIn}`}>
+              HEIST COMPLETE
+            </h1>
+            <p className={`${styles.completionText} ${styles.fadeInDelayed}`}>
+              You've uncovered the truth. Well done.
               <br />
-              But some secrets are meant to stay hidden...
+              The Dark Specter's identity is now revealed.
             </p>
 
             <div className={styles.openVault}>
@@ -372,6 +386,12 @@ export default function TheHeist() {
                 <div className={styles.treasureGlow}>
                   <div className={styles.secretDocument}>
                     <h2>THE DARK SPECTER'S TRUE IDENTITY</h2>
+                    <Image
+                      src={logoImg}
+                      alt="Wolfgang Wallace Logo"
+                      width={300}
+                      height={300}
+                    />
                     <div className={styles.documentContent}>
                       <p>CLASSIFIED DOSSIER #001</p>
                       <p>
@@ -396,12 +416,24 @@ export default function TheHeist() {
                         Still watching from the shadows...
                       </p>
                       <p className={styles.finalMessage}>
-                        Every good con needs someone behind the scenes.
-                        <br />
-                        Every good band needs their mystery.
+                        Thank you for playing our little game.
                         <br />
                         Welcome to Wolfgang Wallace.
                       </p>
+                      <div className={styles.rewardSection}>
+                        <h3>🏆 HEIST MASTER REWARDS UNLOCKED 🏆</h3>
+                        <ul className={styles.rewardsList}>
+                          <li>✓ Secret Band Member Access</li>
+                          <li>✓ Hidden Song Previews</li>
+                          <li>✓ Exclusive Content Portal</li>
+                          <li>✓ The Dark Spectre's Archive</li>
+                        </ul>
+                        <p className={styles.rewardNote}>
+                          Your browser remembers your achievement.
+                          <br />
+                          Look for 👁️ symbols throughout the site.
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>

@@ -69,6 +69,20 @@ export default function Band() {
           </div>
         </div>
 
+        <iframe
+          style={{
+            borderRadius: "12px",
+            marginBottom: "20px",
+            maxWidth: "800px",
+          }}
+          src="https://open.spotify.com/embed/artist/4m3Bhxg7otGtBF7xsfTQTV?utm_source=generator&theme=0"
+          width="100%"
+          height="352"
+          frameBorder="0"
+          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+          loading="lazy"
+        ></iframe>
+
         <div className={styles.membersGrid}>
           {Object.entries(MEMBER_BIOS).map(([key, member]) => (
             <div key={key} className={styles.memberCard}>

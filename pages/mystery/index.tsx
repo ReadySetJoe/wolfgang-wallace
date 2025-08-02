@@ -114,12 +114,13 @@ export default function Mystery() {
     const y = clientY - rect.top;
 
     // Hidden clickable area in the bottom-right corner (The Dark Specter's eyes)
-    // Make the clickable area larger on mobile
-    const clickAreaSize = window.innerWidth <= 768 ? 200 : 150;
+    // Make the clickable area smaller on mobile to prevent accidental clicks
+    const clickAreaSize = window.innerWidth <= 768 ? 100 : 150;
     if (x > rect.width - clickAreaSize && y > rect.height - clickAreaSize) {
       setVoidClicks(voidClicks + 1);
 
-      if (voidClicks >= 2) {
+      // Require 5 clicks to reveal instead of 3
+      if (voidClicks >= 4) {
         setPhase("revealed");
       }
     }
@@ -165,17 +166,30 @@ export default function Mystery() {
           }}
         />
 
-        <div className={styles.voidText}>bienvenue dans le vide</div>
-        <div className={styles.voidHint}>
+        <div className={`${styles.voidText} ${styles.fadeInSlow}`}>
+          bienvenue dans le vide
+          <br />
+          (welcome to the void)
+        </div>
+        <div className={`${styles.voidHint} ${styles.fadeInDelayed}`}>
           The Dark Specter watches from the shadows...
         </div>
-        <div className={styles.eyes} style={{ opacity: eyeOpacity }}>
+        <div
+          className={styles.eyes}
+          style={{
+            opacity: eyeOpacity,
+            transform: `scale(${1 + voidClicks * 0.3})`,
+          }}
+        >
           <div className={styles.eye} />
           <div className={styles.eye} />
         </div>
         {voidClicks > 0 && (
           <div className={styles.clickFeedback}>
-            {voidClicks === 1 ? "The eyes flicker..." : "Almost there..."}
+            {voidClicks === 1 && "The eyes stir..."}
+            {voidClicks === 2 && "They grow more aware..."}
+            {voidClicks === 3 && "The gaze intensifies..."}
+            {voidClicks === 4 && "One more..."}
           </div>
         )}
       </div>
@@ -186,20 +200,20 @@ export default function Mystery() {
     return (
       <Page>
         <div className={styles.revealedContainer}>
-          <h1>Act I - The Long Con</h1>
-          <p className={styles.typewriter}>
+          <h1 className={styles.fadeIn}>Act I - The Long Con</h1>
+          <p className={`${styles.typewriter} ${styles.fadeInDelayed}`}>
             You've found The Dark Specter's eye. But this is just the beginning.
           </p>
-          <div className={styles.riddleBox}>
+          <div className={`${styles.riddleBox} ${styles.fadeInSlow}`}>
             <p>To proceed deeper into the void, solve this riddle:</p>
             <blockquote>
               "In our song of deception, two names dance as one.
               <br />
               ______ and ______, a tale of the undone.
               <br />
-              To find the path to a new page, add a dash in between,
+              For the path to a new page, take a quick slash,
               <br />
-              To discover the truth that lies unseen."
+              Then add your two names, conjoined with a dash."
             </blockquote>
           </div>
         </div>
@@ -210,7 +224,7 @@ export default function Mystery() {
   return (
     <Page>
       <div className={styles.initialContainer}>
-        <p>What is in the box below?</p>
+        <p className={styles.fadeIn}>What is in the box below?</p>
         <input
           value={inputValue}
           onChange={handleInputChange}

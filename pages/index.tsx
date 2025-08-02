@@ -11,7 +11,7 @@ export default function Home() {
           name="description"
           content="A site for a band called wolfgang wallace."
         />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/ww-logo.ico" />
       </Head>
       <Landing />
     </div>

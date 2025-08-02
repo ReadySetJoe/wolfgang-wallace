@@ -26,15 +26,25 @@
 }
 
 .fadeIn {
-  animation: fadeIn 2s ease-in;
+  animation: fadeIn 1s ease-in;
+}
+
+.fadeInSlow {
+  animation: fadeIn 2.5s ease-in;
+}
+
+.fadeInDelayed {
+  animation: fadeIn 1.5s ease-in 1s both;
 }
 
 @keyframes fadeIn {
   from {
     opacity: 0;
+    transform: translateY(10px);
   }
   to {
     opacity: 1;
+    transform: translateY(0);
   }
 }
 
@@ -141,9 +151,10 @@
   right: 50px;
   display: flex;
   gap: 20px;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.3s ease, transform 0.5s ease;
   pointer-events: none;
   z-index: 3;
+  transform-origin: center;
 }
 
 .eye {
@@ -151,13 +162,16 @@
   height: 15px;
   background: radial-gradient(
     circle,
-    rgba(255, 0, 0, 0.8) 0%,
-    rgba(255, 0, 0, 0.4) 50%,
-    transparent 70%
+    rgba(255, 0, 0, 0.9) 0%,
+    rgba(255, 0, 0, 0.6) 40%,
+    rgba(255, 0, 0, 0.3) 60%,
+    transparent 80%
   );
   border-radius: 50%;
   animation: eyePulse 3s infinite;
-  box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+  box-shadow: 0 0 20px rgba(255, 0, 0, 0.5), 
+              0 0 40px rgba(255, 0, 0, 0.3),
+              0 0 60px rgba(255, 0, 0, 0.1);
 }
 
 .eye:nth-child(2) {
@@ -255,8 +269,6 @@
 
 .cipherBox {
   background: rgba(255, 255, 255, 0.03);
-  border: 1px solid #444;
-  padding: 2rem;
   margin: 2rem 0;
   position: relative;
 }

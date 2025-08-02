@@ -100,14 +100,17 @@ export default function BonnieClyde() {
   return (
     <Page>
       <div className={styles.puzzleContainer}>
-        <h1>Act II - Bankruptcy</h1>
+        <h1 className={styles.fadeIn}>Act II - Bankruptcy</h1>
 
-        <div className={styles.storyText}>
+        <div className={`${styles.storyText} ${styles.fadeInDelayed}`}>
           <p>A message from the void, written in symbols...</p>
-          <p>It's equivalent to announcing you're a failure</p>
+          <p>
+            To think, the <em>last words uttered</em> were equivalent to
+            announcing you're a failure...
+          </p>
         </div>
 
-        <div className={styles.cipherBox}>
+        <div className={`${styles.cipherBox} ${styles.fadeInSlow}`}>
           <div className={styles.cipherMessage}>
             {cipherWords.map((word, index) => (
               <div key={index} className={styles.cipherWord}>
@@ -144,7 +147,7 @@ export default function BonnieClyde() {
                   .filter(([_, letter]) => !revealedLetters.includes(letter))
                   .map(([symbol, _]) => (
                     <div key={symbol} className={styles.cipherInput}>
-                      <span>{symbol} = </span>
+                      <span>{symbol}</span>
                       <input
                         type="text"
                         maxLength={1}
