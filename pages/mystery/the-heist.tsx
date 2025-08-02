@@ -437,7 +437,7 @@ export default function TheHeist() {
             <Link
               href="/scavenger-hunt"
               className={`${styles.fadeInSlow}`}
-              style={{ fontSize: "1.2em", marginTop: "20px" }}
+              style={{ fontSize: "1.2em", padding: "20px" }}
             >
               CONTINUE THE SEARCH FOR TRUTH
             </Link>
