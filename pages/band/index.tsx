@@ -84,6 +84,17 @@ export default function Band() {
           loading="lazy"
         ></iframe>
 
+        <iframe
+          width="100%"
+          height="320"
+          src="https://www.youtube.com/embed/o2droJZTYYw?si=aPDvOtLP1IF7beru"
+          title="YouTube video player"
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerPolicy="strict-origin-when-cross-origin"
+          allowFullScreen
+        ></iframe>
+
         <div className={styles.membersGrid}>
           {Object.entries(MEMBER_BIOS).map(([key, member]) => (
             <div key={key} className={styles.memberCard}>
