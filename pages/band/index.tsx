@@ -87,25 +87,22 @@ export default function Band() {
         <div className={styles.membersGrid}>
           {Object.entries(MEMBER_BIOS).map(([key, member]) => (
             <div key={key} className={styles.memberCard}>
-              <div
-                className={styles.memberImageContainer}
-                style={{ position: "relative" }}
-              >
+              <div className={styles.memberImageContainer}>
                 {member.image ? (
-                  <>
+                  <div style={{ position: "relative" }}>
                     <Image
                       src={member.image}
                       alt={member.name}
                       className={styles.memberImage}
                       width={400}
                       height={400}
-                    />
+                    ></Image>
                     {key === "wally" && (
                       <div
                         style={{
                           position: "absolute",
                           bottom: "12px",
-                          right: "140px",
+                          right: "210px",
                         }}
                       >
                         {EyePlacements.BandMember1()}
@@ -116,13 +113,13 @@ export default function Band() {
                         style={{
                           position: "absolute",
                           top: "50px",
-                          right: "50px",
+                          right: "170px",
                         }}
                       >
                         {EyePlacements.BandMember2()}
                       </div>
                     )}
-                  </>
+                  </div>
                 ) : (
                   <div className={styles.memberImagePlaceholder}>
                     <div className={styles.placeholderText}>

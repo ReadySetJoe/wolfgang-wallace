@@ -40,7 +40,7 @@ export const EyePlacements = {
   BandBio: () => (
     <CollectibleEye
       eyeId="band-bio"
-      hint="Hidden in the story of the band"
+      hint="Having had the pleasure of introductions, seek a warning near the end"
       hidden
     />
   ),
@@ -114,7 +114,6 @@ export const EyePlacements = {
     <CollectibleEye
       eyeId="konami-eye"
       hint="The final eye. Do you know the code? The keys are the key, contra-ry to popular belief. Best of luck"
-      hidden
     />
   ),
 };
@@ -127,7 +126,10 @@ export const EYE_DATA = [
   { id: "band-member-1", hint: "The first member holds a secret" },
   { id: "band-member-2", hint: "The second member shines" },
   { id: "band-member-3", hint: "The third member sees through the mist" },
-  { id: "band-bio", hint: "Hidden in the story of the band" },
+  {
+    id: "band-bio",
+    hint: "Having had the pleasure of introductions, seek a warning near the end",
+  },
   { id: "lore-ch1", hint: "Visions of grandeur and conquest" },
   { id: "lore-ch2", hint: "Our hero's introduction" },
   { id: "lore-secret", hint: "Between the lines" },
