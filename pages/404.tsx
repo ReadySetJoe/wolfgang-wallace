@@ -1,6 +1,6 @@
-import Page from "../components/Page";
 import { EyePlacements } from "../utils/eyePlacements";
 import styles from "../styles/404.module.css";
+import Page from "../components/page";
 
 export default function Custom404() {
   return (
