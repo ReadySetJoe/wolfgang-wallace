@@ -1,6 +1,6 @@
 import { Container } from "@mui/material";
 import { PropsWithChildren } from "react";
-import Header from "./Header";
+import Header from "./header";
 
 const Page = ({ children }: PropsWithChildren) => {
   return (
