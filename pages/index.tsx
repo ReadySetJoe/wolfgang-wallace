@@ -1,4 +1,4 @@
-import Landing from "../components/screens/Landing";
+import Landing from "../components/screens/landing";
 import styles from "../styles/Home.module.css";
 
 export default function Home() {
