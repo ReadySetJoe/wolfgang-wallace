@@ -82,7 +82,8 @@ export default function ScavengerHunt() {
             to lift.
           </p>
           <p className={styles.reward}>
-            🎵 Reward: [Placeholder - Acoustic demo of unreleased track]
+            🎵 Reward: [Placeholder - Video introducing them to the hunt, +
+            demos?]
           </p>
         </div>
       );
@@ -94,7 +95,8 @@ export default function ScavengerHunt() {
           <h3>Awakening Vision (5 Eyes Found)</h3>
           <p>Your perception sharpens. The patterns become clearer.</p>
           <p className={styles.reward}>
-            📖 Reward: [Placeholder - Secret band member diary entries]
+            🎨 Reward: [Placeholder - Congratulatory video + link to Joe Smo art
+            gallery]
           </p>
         </div>
       );
@@ -106,7 +108,8 @@ export default function ScavengerHunt() {
           <h3>Third Eye Open (10 Eyes Found)</h3>
           <p>Half the truth is revealed. The mysteries deepen.</p>
           <p className={styles.reward}>
-            🎬 Reward: [Placeholder - Behind-the-scenes studio footage]
+            🎬 Reward: [Placeholder - Video warning of the final eyes + Google
+            drive access to all of Wolfgang Finds the Perfect Tooth demos]
           </p>
         </div>
       );
@@ -118,8 +121,8 @@ export default function ScavengerHunt() {
           <h3>All-Seeing (20 Eyes Found - COMPLETE)</h3>
           <p>You have found them all. The full truth is yours.</p>
           <p className={styles.reward}>
-            🏆 Ultimate Reward: [Placeholder - Exclusive album pre-release +
-            Secret concert invitation]
+            🏆 Ultimate Reward: [Personalized message, and a code for a venmo
+            request for $20]
           </p>
           <button
             className={styles.resetButton}
@@ -154,7 +157,9 @@ export default function ScavengerHunt() {
           </div>
           {getNextTierInfo() && (
             <p className={styles.nextTierInfo}>
-              Collect {getNextTierInfo()!.needed} more eye{getNextTierInfo()!.needed !== 1 ? 's' : ''} to unlock <strong>{getNextTierInfo()!.tier}</strong>
+              Collect {getNextTierInfo()!.needed} more eye
+              {getNextTierInfo()!.needed !== 1 ? "s" : ""} to unlock{" "}
+              <strong>{getNextTierInfo()!.tier}</strong>
             </p>
           )}
         </div>
