@@ -13,26 +13,25 @@ export default function Lore() {
   const [loading, setLoading] = useState(true);
   const [selectedSong, setSelectedSong] = useState<string | null>(null);
 
-  const songFiles = [
-    { file: "bankrupt.txt", title: "Bankrupt" },
-    { file: "comatose.txt", title: "Comatose" },
-    {
-      file: "compulsory-evacuation-device.txt",
-      title: "Compulsory Evacuation Device",
-    },
-    { file: "consequences.txt", title: "Consequences" },
-    { file: "dance-macabre.txt", title: "The Dance Macabre" },
-    { file: "harbor.txt", title: "Harbor" },
-    { file: "keep-out.txt", title: "Keep Out" },
-    { file: "napoleon.txt", title: "Napoleon" },
-    { file: "smile-wide.txt", title: "Smile Wide" },
-    { file: "tarot.txt", title: "Tarot Arcana XVI: The Tower" },
-    { file: "the-long-con.txt", title: "The Long Con" },
-  ];
-
   useEffect(() => {
     const loadSongs = async () => {
       try {
+        const songFiles = [
+          { file: "bankrupt.txt", title: "Bankrupt" },
+          { file: "comatose.txt", title: "Comatose" },
+          {
+            file: "compulsory-evacuation-device.txt",
+            title: "Compulsory Evacuation Device",
+          },
+          { file: "consequences.txt", title: "Consequences" },
+          { file: "dance-macabre.txt", title: "The Dance Macabre" },
+          { file: "harbor.txt", title: "Harbor" },
+          { file: "keep-out.txt", title: "Keep Out" },
+          { file: "napoleon.txt", title: "Napoleon" },
+          { file: "smile-wide.txt", title: "Smile Wide" },
+          { file: "tarot.txt", title: "Tarot Arcana XVI: The Tower" },
+          { file: "the-long-con.txt", title: "The Long Con" },
+        ];
         const songPromises = songFiles.map(async ({ file, title }) => {
           const response = await fetch(`/assets/${file}`);
           const lyrics = await response.text();
