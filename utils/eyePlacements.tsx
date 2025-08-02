@@ -29,7 +29,7 @@ export const EyePlacements = {
     />
   ),
   BandMember2: () => (
-    <CollectibleEye eyeId="band-member-2" hint="The second member shines" />
+    <CollectibleEye eyeId="band-member-2" hint="The second member blossoms" />
   ),
   BandMember3: () => (
     <CollectibleEye
@@ -124,7 +124,7 @@ export const EYE_DATA = [
   { id: "home-album", hint: "Hidden within the corners of a dark triad" },
   { id: "home-title", hint: "Landing near home, we introduce ourselves" },
   { id: "band-member-1", hint: "The first member holds a secret" },
-  { id: "band-member-2", hint: "The second member shines" },
+  { id: "band-member-2", hint: "The second member blossoms" },
   { id: "band-member-3", hint: "The third member sees through the mist" },
   {
     id: "band-bio",

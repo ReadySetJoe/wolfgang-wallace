@@ -70,7 +70,7 @@ export default function Band() {
           </div>
         </div>
 
-        <iframe
+        {/* <iframe
           style={{
             borderRadius: "12px",
             marginBottom: "20px",
@@ -82,7 +82,47 @@ export default function Band() {
           frameBorder="0"
           allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
           loading="lazy"
-        ></iframe>
+        ></iframe> */}
+        <div
+          className={styles.spotifyLinkContainer}
+          style={{ margin: "24px 0", textAlign: "center" }}
+        >
+          <a
+            href="https://open.spotify.com/artist/4m3Bhxg7otGtBF7xsfTQTV?si=mIoj9Yj6SBGZKvQVrIoXpA"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.spotifyLink}
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "8px",
+              background: "#1DB954",
+              color: "#fff",
+              padding: "12px 24px",
+              borderRadius: "24px",
+              fontWeight: 600,
+              textDecoration: "none",
+              fontSize: "1.1rem",
+              boxShadow: "0 2px 8px rgba(30,185,84,0.15)",
+              transition: "background 0.2s",
+            }}
+          >
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 168 168"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <circle cx="84" cy="84" r="84" fill="#1ED760" />
+              <path
+                d="M120.1 116.3c-1.7 2.8-5.3 3.7-8.1 2-22.2-13.6-50.2-16.7-83.2-9.2-3.2.7-6.4-1.3-7.1-4.5-.7-3.2 1.3-6.4 4.5-7.1 35.3-7.9 65.2-4.4 89.2 10.5 2.8 1.7 3.7 5.3 2 8.1zm11.6-23.5c-2.1 3.4-6.5 4.5-9.9 2.4-25.5-15.7-64.5-20.2-94.7-11.1-3.8 1.1-7.8-1.1-8.9-4.9-1.1-3.8 1.1-7.8 4.9-8.9 33.9-9.9 76.2-5 104.6 12.3 3.4 2.1 4.5 6.5 2.4 9.9zm.9-25.2C98.6 53.5 54.7 52.2 31.7 58.7c-4.3 1.2-8.7-1.2-9.9-5.5-1.2-4.3 1.2-8.7 5.5-9.9 26.2-7.2 74.1-5.7 104.7 13.2 4 2.4 5.3 7.6 2.9 11.6-2.4 4-7.6 5.3-11.6 2.9z"
+                fill="#fff"
+              />
+            </svg>
+            Listen on Spotify
+          </a>
+        </div>
 
         <iframe
           style={{
@@ -117,8 +157,8 @@ export default function Band() {
                       <div
                         style={{
                           position: "absolute",
-                          bottom: "12px",
-                          right: "210px",
+                          bottom: "3%",
+                          right: "46%",
                         }}
                       >
                         {EyePlacements.BandMember1()}
@@ -128,8 +168,8 @@ export default function Band() {
                       <div
                         style={{
                           position: "absolute",
-                          top: "50px",
-                          right: "170px",
+                          top: "40%",
+                          right: "61%",
                         }}
                       >
                         {EyePlacements.BandMember2()}
