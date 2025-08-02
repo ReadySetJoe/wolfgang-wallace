@@ -85,6 +85,11 @@ export default function Band() {
         ></iframe>
 
         <iframe
+          style={{
+            borderRadius: "12px",
+            marginBottom: "20px",
+            maxWidth: "800px",
+          }}
           width="100%"
           height="320"
           src="https://www.youtube.com/embed/o2droJZTYYw?si=aPDvOtLP1IF7beru"
