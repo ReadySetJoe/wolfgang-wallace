@@ -33,7 +33,7 @@ const MEMBER_BIOS = {
     status: "Identity Unknown",
   },
   shane: {
-    name: "Shane",
+    name: "Gavin",
     title: "The Rhythm Reaper",
     position: "Drums, Percussion",
     bio: "Beats the drums with bones he claims belonged to his enemies. Each strike echoes through dimensions, summoning spirits to dance macabre. His tempo controls the heartbeat of the damned.",
